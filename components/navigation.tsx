@@ -10,31 +10,39 @@ import Logo from "@/assets/logo.png";
 import Link from "next/link";
 
 const Navigation = () => {
-  const [activeSection, setActiveSection] = useState("Home");
+  const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Articles", path: "/articles" },
+    { name: "Home", sectionId: "home" },
+    { name: "About", sectionId: "about" },
+    { name: "Projects", sectionId: "projects" },
+    { name: "Articles", sectionId: "articles" },
+    { name: "Contact", sectionId: "contact" },
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <nav className="flex items-center justify-between px-8 py-1 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-1 bg-white/80 backdrop-blur-md">
       <div className="flex space-x-8">
         {navItems.map((item) => (
-          <Link
+          <button
             key={item.name}
-            href={item.path}
-            onClick={() => setActiveSection(item.name)}
+            onClick={() => scrollToSection(item.sectionId)}
             className={`text-base font-medium transition-all duration-300 hover:text-blue-600 ${
-              activeSection === item.name
+              activeSection === item.sectionId
                 ? "text-gray-900 border-b-2 border-blue-600 pb-1"
                 : "text-gray-600"
             }`}
           >
             {item.name}
-          </Link>
+          </button>
         ))}
       </div>
 
@@ -42,7 +50,7 @@ const Navigation = () => {
         <Image src={Logo} alt="Logo" width={100} height={100} />
       </div>
 
-      <div className="flex space-x-6 items-center">
+      <div className="flex items-center space-x-6">
         <Link
           href="https://x.com/SunilShah2416"
           target="_blank"
@@ -57,7 +65,7 @@ const Navigation = () => {
           rel="noopener noreferrer"
           className="hover:opacity-80"
         >
-          <FaGithub className="text-gray-900 text-2xl hover:text-blue-600 transition-colors" />
+          <FaGithub className="text-2xl text-gray-900 transition-colors hover:text-blue-600" />
         </Link>
         <Link
           href="https://www.linkedin.com/in/sunilshah77/"

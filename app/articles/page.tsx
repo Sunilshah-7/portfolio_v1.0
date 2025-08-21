@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "@/components/navigation";
+
 import Image from "next/image";
 import Link from "next/link";
 import DecentralizedAIImage from "@/assets/decentralized_ai.png";
@@ -7,6 +7,7 @@ import HardwareAIImage from "@/assets/hardware_ai.png";
 import HumorAIImage from "@/assets/humor_ai.png";
 import TrustworthyAIImage from "@/assets/trustworthy_ai.png";
 import HealthcareAIImage from "@/assets/health_ai.jpg";
+import type { StaticImageData } from "next/image";
 
 // You can move this to a separate data file later
 const articles = [
@@ -53,11 +54,19 @@ const articles = [
   },
 ];
 
-const ArticleCard = ({ article }) => {
+type Article = {
+  title: string;
+  description: string;
+  readTime: string;
+  image: StaticImageData;
+  link: string;
+};
+
+const ArticleCard = ({ article }: { article: Article }) => {
   return (
     <Link href={article.link}>
       <div className="bg-white rounded-3xl overflow-hidden shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 ease-in-out max-w-sm transform hover:-translate-y-1">
-        <div className="relative h-64 w-full">
+        <div className="relative w-full h-64">
           <Image
             src={article.image}
             alt={article.title}
@@ -66,10 +75,10 @@ const ArticleCard = ({ article }) => {
           />
         </div>
         <div className="p-8">
-          <h3 className="text-xl font-bold mb-3 text-gray-900">
+          <h3 className="mb-3 text-xl font-bold text-gray-900">
             {article.title}
           </h3>
-          <p className="text-gray-600 mb-4 line-clamp-3">
+          <p className="mb-4 text-gray-600 line-clamp-3">
             {article.description}
           </p>
           <div className="flex items-center">
@@ -84,17 +93,16 @@ const ArticleCard = ({ article }) => {
 const Articles = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl font-bold text-center mb-12 text-black">
-          All Articles
+      <section className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <h1 className="mb-12 text-4xl font-bold text-center text-black">
+          Articles
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article, index) => (
             <ArticleCard key={index} article={article} />
           ))}
         </div>
-      </main>
+      </section>
     </div>
   );
 };
