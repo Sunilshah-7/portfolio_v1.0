@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Image from "next/image";
-
-// import MobileRobot from "@/assets/mobile_robot.png";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
 import AIParliament from "@/assets/ai-parliament.png";
 import Agrotrack from "@/assets/agrotrack.png";
@@ -123,7 +121,7 @@ const Projects = () => {
     }
   }, [isPaused, projects.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
@@ -139,7 +137,7 @@ const Projects = () => {
     );
   };
 
-  const viewProject = (e, link) => {
+  const viewProject = (e: React.MouseEvent<HTMLDivElement>, link: string) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -217,11 +215,6 @@ const Projects = () => {
                             src={project.image}
                             alt={project.title}
                             className="object-cover w-full h-full transition-all duration-300 rounded-xl"
-                            onError={(e) => {
-                              // Fallback if image fails to load
-                              const target = e.target;
-                              target.style.display = "none";
-                            }}
                           />
                           {/* Subtle overlay on image */}
                           <div className="absolute inset-0 transition-opacity duration-300 rounded-xl bg-black/10 group-hover:bg-black/5"></div>
