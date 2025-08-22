@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Image from "next/image";
-import { RxExternalLink } from "react-icons/rx";
+
 // import MobileRobot from "@/assets/mobile_robot.png";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
 import AIParliament from "@/assets/ai-parliament.png";
@@ -15,7 +15,6 @@ import OrderManagement from "@/assets/order-management.png";
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const router = useRouter();
 
   const projects = [
     {
