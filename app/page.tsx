@@ -5,6 +5,7 @@ import About from "./about/page";
 import Projects from "./projects/page";
 import Articles from "./articles/page";
 import Contact from "./contact/page";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // import Articles from "./articles/page";
 
 export default function Home() {
