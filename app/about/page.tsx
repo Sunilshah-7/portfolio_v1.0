@@ -22,33 +22,34 @@ const Education = () => {
       year: "2018 - 2023",
     },
   ];
+
   return (
-    <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <section className="mt-16">
-        <h2 className="flex items-center gap-4 mb-12 text-4xl font-bold tracking-wider text-gray-900">
-          <IoBookOutline /> EDUCATION
+    <div className="px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 max-w-7xl">
+      <section className="mt-8 sm:mt-16">
+        <h2 className="flex flex-col items-start gap-2 mb-8 text-3xl font-bold tracking-wider text-gray-900 sm:flex-row sm:items-center sm:gap-4 sm:mb-12 sm:text-4xl">
+          <IoBookOutline className="text-3xl sm:text-4xl" /> EDUCATION
         </h2>
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-400"></div>
+          {/* Timeline Line - adjusted for mobile */}
+          <div className="absolute left-2 sm:left-4 top-0 bottom-0 w-0.5 bg-blue-400"></div>
 
           {/* Timeline Items */}
           {educationData.map((item, index) => (
-            <div key={index} className="relative mb-16 last:mb-0">
+            <div key={index} className="relative mb-12 sm:mb-16 last:mb-0">
               {/* Timeline Dot */}
-              <div className="absolute left-0 flex items-center justify-center w-8 h-8 bg-blue-400 border-4 border-white rounded-full">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="absolute left-0 flex items-center justify-center w-6 h-6 bg-blue-400 border-4 border-white rounded-full sm:left-0 sm:w-8 sm:h-8">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
               </div>
 
               {/* Content */}
-              <div className="ml-16">
+              <div className="ml-10 sm:ml-16">
                 {/* Title */}
-                <h2 className="mb-2 text-3xl font-bold text-black">
+                <h2 className="mb-2 text-xl font-bold leading-tight text-black sm:text-2xl lg:text-3xl">
                   {item.degree}
                 </h2>
 
                 {/* Organization and Period */}
-                <div className="mb-6 text-xl font-semibold tracking-wider text-blue-400">
+                <div className="mb-6 text-base font-semibold tracking-wider text-blue-400 sm:text-lg lg:text-xl">
                   {item.institution} | {item.year}
                 </div>
               </div>
@@ -102,42 +103,42 @@ const WorkExperience = () => {
   ];
 
   return (
-    <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <section className="mt-16">
-        <h2 className="flex items-center gap-4 mb-12 text-4xl font-bold tracking-wider text-gray-900">
-          <MdOutlineWorkOutline /> WORK EXPERIENCE
+    <div className="px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 max-w-7xl">
+      <section className="mt-8 sm:mt-16">
+        <h2 className="flex flex-col items-start gap-2 mb-8 text-3xl font-bold tracking-wider text-gray-900 sm:flex-row sm:items-center sm:gap-4 sm:mb-12 sm:text-4xl">
+          <MdOutlineWorkOutline className="text-3xl sm:text-4xl" /> WORK
+          EXPERIENCE
         </h2>
 
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-400"></div>
+          {/* Timeline Line - adjusted for mobile */}
+          <div className="absolute left-2 sm:left-4 top-0 bottom-0 w-0.5 bg-blue-400"></div>
 
           {/* Timeline Items */}
           {experienceData.map((item, index) => (
-            <div key={index} className="relative mb-16 last:mb-0">
+            <div key={index} className="relative mb-12 sm:mb-16 last:mb-0">
               {/* Timeline Dot */}
-              <div className="absolute left-0 flex items-center justify-center w-8 h-8 bg-blue-400 border-4 border-white rounded-full">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="absolute left-0 flex items-center justify-center w-6 h-6 bg-blue-400 border-4 border-white rounded-full sm:left-0 sm:w-8 sm:h-8">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
               </div>
 
               {/* Content */}
-              <div className="ml-16">
+              <div className="ml-10 sm:ml-16">
                 {/* Title */}
-                <h2 className="mb-2 text-3xl font-bold text-black">
+                <h2 className="mb-2 text-xl font-bold text-black sm:text-2xl lg:text-3xl">
                   {item.title}
                 </h2>
 
                 {/* Organization and Period */}
-                <div className="mb-6 text-xl font-semibold tracking-wider text-blue-400">
+                <div className="mb-4 text-base font-semibold tracking-wider text-blue-400 sm:mb-6 sm:text-lg lg:text-xl">
                   {item.company} , {item.location} | {item.period}
                 </div>
 
                 {/* Achievements */}
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {item.achievements.map((achievement, achievementIndex) => (
                     <div key={achievementIndex} className="flex items-start">
-                      {/* <div className="flex-shrink-0 w-2 h-2 mt-3 mr-4 bg-black rounded-full"></div> */}
-                      <p className="text-base leading-relaxed text-black">
+                      <p className="text-sm leading-relaxed text-black sm:text-base">
                         {achievement}
                       </p>
                     </div>
@@ -193,22 +194,22 @@ const ResearchExperience = () => {
   ];
 
   return (
-    <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <section className="mt-16">
-        <h2 className="flex items-center gap-4 mb-12 text-4xl font-bold tracking-wider text-gray-900">
-          <AiOutlineExperiment />
+    <div className="px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 max-w-7xl">
+      <section className="mt-8 sm:mt-16">
+        <h2 className="flex flex-col items-start gap-2 mb-8 text-3xl font-bold tracking-wider text-gray-900 sm:flex-row sm:items-center sm:gap-4 sm:mb-12 sm:text-4xl">
+          <AiOutlineExperiment className="text-3xl sm:text-4xl" />
           RESEARCH EXPERIENCE
         </h2>
 
-        {/* Changed from horizontal flex to vertical stack */}
+        {/* Responsive layout - stacked on mobile, cards on desktop */}
         <div className="space-y-6">
           {researchData.map((research, index) => (
             <div
               key={index}
-              className="flex overflow-hidden bg-white rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
+              className="flex flex-col lg:flex-row overflow-hidden bg-white rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-[1.02] cursor-pointer"
             >
-              {/* Modified left side - Remove background and padding, adjust Image */}
-              <div className="relative flex-shrink-0 w-1/3 h-[300px]">
+              {/* Image section - full width on mobile, 1/3 on desktop */}
+              <div className="relative w-full lg:w-1/3 h-48 sm:h-64 lg:h-[300px]">
                 <Image
                   src={research.image}
                   alt={research.title}
@@ -219,36 +220,38 @@ const ResearchExperience = () => {
                 />
               </div>
 
-              {/* Right side - Content */}
-              <div className="flex-1 p-6">
-                <h3 className="mb-2 text-xl font-bold text-black">
+              {/* Content section */}
+              <div className="flex-1 p-4 sm:p-6">
+                <h3 className="mb-2 text-lg font-bold text-black sm:text-xl">
                   {research.title}
                 </h3>
                 <p className="mb-2 text-sm text-gray-600">
                   {research.subtitle}
                 </p>
-                <p className="mb-4 text-sm text-gray-700">
+                <p className="mb-4 text-sm leading-relaxed text-gray-700 sm:text-base">
                   {research.description}
                 </p>
 
                 {/* Action buttons */}
-                <div className="flex space-x-2">
-                  {research.actions?.map((action, actionIndex) => (
-                    <Link
-                      key={actionIndex}
-                      href={action.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 text-sm rounded-full transition-colors ${
-                        action.variant === "outline"
-                          ? "border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
-                          : "bg-gray-800 text-white hover:bg-gray-700"
-                      }`}
-                    >
-                      {action.label}
-                    </Link>
-                  ))}
-                </div>
+                {research.actions && (
+                  <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+                    {research.actions.map((action, actionIndex) => (
+                      <Link
+                        key={actionIndex}
+                        href={action.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`px-4 py-2 text-sm rounded-full transition-colors text-center ${
+                          action.variant === "outline"
+                            ? "border border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white"
+                            : "bg-gray-800 text-white hover:bg-gray-700"
+                        }`}
+                      >
+                        {action.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}

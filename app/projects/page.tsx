@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Image from "next/image";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
@@ -115,7 +114,7 @@ const Projects = () => {
         setCurrentIndex((prevIndex) =>
           prevIndex === projects.length - 1 ? 0 : prevIndex + 1
         );
-      }, 4000); // Auto scroll every 4 seconds
+      }, 4000);
 
       return () => clearInterval(interval);
     }
@@ -140,17 +139,17 @@ const Projects = () => {
   const viewProject = (e: React.MouseEvent<HTMLDivElement>, link: string) => {
     e.preventDefault();
     e.stopPropagation();
-
     window.open(link);
   };
+
   return (
-    <div className="bg-blue-200">
-      <div className="w-full px-4 py-12 mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-white">
+    <div className="min-h-screen bg-blue-200">
+      <div className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <div className="mb-8 text-center sm:mb-12">
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
             Featured Projects
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-base text-gray-400 sm:text-lg">
             Discover my latest work and creations
           </p>
         </div>
@@ -169,36 +168,37 @@ const Projects = () => {
               <div
                 key={index}
                 onClick={(e) => viewProject(e, project.link)}
-                className="relative flex-shrink-0 w-full group"
+                className="relative flex-shrink-0 w-full cursor-pointer group"
               >
-                {/* Hover tooltip */}
-                <div className="absolute z-10 px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 transform -translate-x-1/2 rounded-lg opacity-0 pointer-events-none top-4 left-1/2 bg-black/80 group-hover:opacity-100 whitespace-nowrap">
+                {/* Hover tooltip - hidden on mobile */}
+                <div className="absolute z-10 hidden px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 transform -translate-x-1/2 rounded-lg opacity-0 pointer-events-none top-4 left-1/2 bg-black/80 group-hover:opacity-100 whitespace-nowrap sm:block">
                   Click to View project
                 </div>
-                <div className="relative h-96 md:h-[500px] mx-4">
+
+                <div className="relative h-80 sm:h-96 md:h-[500px] mx-2 sm:mx-4">
                   {/* Project Card */}
                   <div
                     className={`h-full rounded-2xl bg-gradient-to-br ${project.color} relative overflow-hidden group cursor-pointer transform transition-all duration-300`}
                   >
-                    {/* Two Column Layout */}
+                    {/* Layout - stacked on mobile, side-by-side on desktop */}
                     <div className="flex flex-col h-full md:flex-row">
-                      {/* Left Content Section */}
-                      <div className="flex-1 p-6 md:p-8">
+                      {/* Content Section */}
+                      <div className="flex-1 p-4 sm:p-6 md:p-8">
                         <div className="flex flex-col justify-between h-full">
                           <div>
-                            <h3 className="mb-4 text-2xl font-bold leading-tight text-white md:text-3xl lg:text-4xl">
+                            <h3 className="mb-2 text-xl font-bold leading-tight text-white sm:mb-4 sm:text-2xl md:text-3xl lg:text-4xl">
                               {project.title}
                             </h3>
-                            <p className="mb-6 text-base text-white/90 md:text-lg">
+                            <p className="mb-4 text-sm sm:mb-6 sm:text-base md:text-lg text-white/90">
                               {project.description}
                             </p>
 
                             {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mb-6">
+                            <div className="flex flex-wrap gap-1 mb-4 sm:gap-2 sm:mb-6">
                               {project.tags.map((tag, tagIndex) => (
                                 <span
                                   key={tagIndex}
-                                  className="px-3 py-1 text-sm font-medium text-white rounded-full bg-white/20 backdrop-blur-sm"
+                                  className="px-2 py-1 text-xs font-medium text-white rounded-full sm:px-3 sm:text-sm bg-white/20 backdrop-blur-sm"
                                 >
                                   {tag}
                                 </span>
@@ -208,12 +208,13 @@ const Projects = () => {
                         </div>
                       </div>
 
-                      {/* Right Image Section */}
-                      <div className="flex-1 p-4 md:p-4">
-                        <div className="relative h-48 overflow-hidden transition-transform duration-300 md:h-full rounded-xl">
+                      {/* Image Section */}
+                      <div className="flex-1 p-2 sm:p-4 md:p-4">
+                        <div className="relative h-32 overflow-hidden transition-transform duration-300 sm:h-48 md:h-full rounded-xl">
                           <Image
                             src={project.image}
                             alt={project.title}
+                            fill
                             className="object-cover w-full h-full transition-all duration-300 rounded-xl"
                           />
                           {/* Subtle overlay on image */}
@@ -230,33 +231,33 @@ const Projects = () => {
             ))}
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute flex items-center justify-center w-12 h-12 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full left-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
+            className="absolute items-center justify-center hidden w-10 h-10 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full sm:flex sm:w-12 sm:h-12 left-2 sm:left-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
             aria-label="Previous project"
           >
-            <MdChevronLeft className="w-6 h-6" />
+            <MdChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute flex items-center justify-center w-12 h-12 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full right-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
+            className="absolute items-center justify-center hidden w-10 h-10 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full sm:flex sm:w-12 sm:h-12 right-2 sm:right-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
             aria-label="Next project"
           >
-            <MdChevronRight className="w-6 h-6" />
+            <MdChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
           {projects.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-white w-8"
+                  ? "bg-white w-6 sm:w-8"
                   : "bg-white/30 hover:bg-white/50"
               }`}
               aria-label={`Go to project ${index + 1}`}

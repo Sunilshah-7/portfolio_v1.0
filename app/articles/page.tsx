@@ -1,5 +1,4 @@
 import React from "react";
-
 import Image from "next/image";
 import Link from "next/link";
 import DecentralizedAIImage from "@/assets/decentralized_ai.png";
@@ -65,24 +64,27 @@ type Article = {
 const ArticleCard = ({ article }: { article: Article }) => {
   return (
     <Link href={article.link}>
-      <div className="bg-white rounded-3xl overflow-hidden shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 ease-in-out max-w-sm transform hover:-translate-y-1">
-        <div className="relative w-full h-64">
+      <div className="bg-white rounded-3xl overflow-hidden shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 ease-in-out max-w-sm mx-auto transform hover:-translate-y-1">
+        <div className="relative w-full h-48 sm:h-56 md:h-64">
           <Image
             src={article.image}
             alt={article.title}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
-        <div className="p-8">
-          <h3 className="mb-3 text-xl font-bold text-gray-900">
+        <div className="p-6 sm:p-8">
+          <h3 className="mb-3 text-lg font-bold text-gray-900 sm:text-xl line-clamp-2">
             {article.title}
           </h3>
-          <p className="mb-4 text-gray-600 line-clamp-3">
+          <p className="mb-4 text-sm leading-relaxed text-gray-600 sm:text-base line-clamp-3">
             {article.description}
           </p>
           <div className="flex items-center">
-            <span className="text-sm text-gray-500">{article.readTime}</span>
+            <span className="text-xs text-gray-500 sm:text-sm">
+              {article.readTime}
+            </span>
           </div>
         </div>
       </div>
@@ -93,11 +95,11 @@ const ArticleCard = ({ article }: { article: Article }) => {
 const Articles = () => {
   return (
     <div className="min-h-screen bg-white">
-      <section className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <h1 className="mb-12 text-4xl font-bold text-center text-black">
+      <section className="px-4 py-8 mx-auto sm:px-6 lg:px-8 sm:py-12 max-w-7xl">
+        <h1 className="mb-8 text-3xl font-bold text-center text-black sm:mb-12 sm:text-4xl">
           Articles
         </h1>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 sm:gap-8">
           {articles.map((article, index) => (
             <ArticleCard key={index} article={article} />
           ))}

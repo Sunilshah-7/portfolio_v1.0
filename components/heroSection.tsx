@@ -26,16 +26,25 @@ const HeroSection = () => {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <div className="container flex items-center min-h-screen px-8 py-20 mx-auto">
-        <div className="grid items-center w-full grid-cols-1 gap-16 lg:grid-cols-2">
-          <div className="flex justify-center lg:justify-start">
-            <Image src={Portrait} alt="Profile" />
+      <div className="container flex items-center min-h-screen px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20">
+        <div className="grid items-center w-full grid-cols-1 gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
+          {/* Image - shown first on mobile, second on desktop */}
+          <div className="flex justify-center order-1 lg:justify-start lg:order-1">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+              <Image
+                src={Portrait}
+                alt="Profile"
+                fill
+                className="object-cover rounded-full lg:rounded-none"
+                priority
+              />
+            </div>
           </div>
 
-          {/* Right side - Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl font-bold leading-tight text-gray-900 lg:text-6xl">
+          {/* Content - shown second on mobile, first on desktop */}
+          <div className="order-2 space-y-6 text-center sm:space-y-8 lg:text-left lg:order-2">
+            <div className="space-y-4 sm:space-y-6">
+              <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
                 <span className="block">Turning Vision Into</span>
                 <span className="block text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
                   Reality With One Intelligent Line of
@@ -43,7 +52,7 @@ const HeroSection = () => {
                 <span className="block">Code At a Time.</span>
               </h1>
 
-              <p className="max-w-lg text-xl leading-relaxed text-gray-600">
+              <p className="max-w-lg mx-auto text-base leading-relaxed text-gray-600 lg:mx-0 sm:text-lg lg:text-xl">
                 I believe great software isn&#39;t just built—it&#39;s imagined,
                 designed, and refined. With a passion for AI and product
                 thinking, I engineer meaningful digital experiences that learn,
@@ -51,10 +60,10 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
               <button
                 onClick={openResume}
-                className="flex items-center gap-2 px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-gray-900 rounded-lg shadow-lg group hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1"
+                className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-gray-900 rounded-lg shadow-lg group hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1"
               >
                 Resume
                 <FaExternalLinkAlt
@@ -65,7 +74,7 @@ const HeroSection = () => {
 
               <button
                 onClick={scrollToContact}
-                className="flex items-center gap-2 px-6 py-3 font-semibold text-gray-900 transition-all duration-300 transform border-2 border-gray-900 rounded-lg hover:bg-gray-900 hover:text-white hover:-translate-y-1"
+                className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-gray-900 transition-all duration-300 transform border-2 border-gray-900 rounded-lg hover:bg-gray-900 hover:text-white hover:-translate-y-1"
               >
                 Contact
               </button>
@@ -75,7 +84,6 @@ const HeroSection = () => {
       </div>
 
       <HireMeButton />
-      {/* <AnimatedLightbulb /> */}
     </main>
   );
 };

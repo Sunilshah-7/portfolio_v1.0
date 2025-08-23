@@ -34,22 +34,22 @@ const HeroAnimation = ({
         isSliding ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <div className="flex flex-col items-center justify-center space-y-8">
-        {/* Logo with fade-in animation */}
+      <div className="flex flex-col items-center justify-center px-4 space-y-4 sm:space-y-8">
+        {/* Logo with fade-in animation - responsive sizing */}
         <div className="animate-fade-in">
           <Image
             src={Logo}
             alt="Logo"
-            width={200}
-            height={200}
-            className="animate-pulse"
+            width={150}
+            height={150}
+            className="w-32 h-32 animate-pulse sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52"
             priority
           />
         </div>
 
-        {/* Optional loading text */}
+        {/* Optional loading text - responsive text size */}
         <div className="animate-fade-in-delayed">
-          <p className="text-2xl font-semibold text-white animate-bounce">
+          <p className="text-lg font-semibold text-center text-white sm:text-xl md:text-2xl animate-bounce">
             Welcome
           </p>
         </div>
