@@ -64,6 +64,15 @@ const Education = () => {
 const WorkExperience = () => {
   const experienceData = [
     {
+      title: "Open Source Program Office Student Ambassador",
+      company: "Open Source Program Office, George Washington University",
+      location: "Washington DC, USA",
+      period: "Sep 2025 - Present",
+      achievements: [
+        "Building an ML-driven UN SDG classifier website leveraging sentence transformers to analyze repositories and issues, providing actionable insights on how open-source projects align with UN Sustainable Development Goals.",
+      ],
+    },
+    {
       title: "Machine Learning Intern",
       company: "DriverAI LLC",
       location: "Arizona, USA",

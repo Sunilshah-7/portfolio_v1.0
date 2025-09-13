@@ -30,12 +30,12 @@ const HeroSection = () => {
         <div className="grid items-center w-full grid-cols-1 gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
           {/* Image - shown first on mobile, second on desktop */}
           <div className="flex justify-center order-1 lg:justify-start lg:order-1">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-full lg:h-200 ">
               <Image
                 src={Portrait}
                 alt="Profile"
                 fill
-                className="object-cover rounded-full lg:rounded-none"
+                className="object-cover rounded-none lg:rounded-lg"
                 priority
               />
             </div>
