@@ -106,7 +106,7 @@ const WorkExperience = () => {
       location: "Kathmandu, Nepal",
       period: "Jun 2020 – Aug 2020",
       achievements: [
-        "Designed a Swift-based data collection application that enabled 50+ volunteers to gather over 1,000 speech samples, contributing to a 30% performance boost in CNN model accuracy through PyTorch-driven deep learning optimizations.",
+        "Designed a Hybrid data collection application that enabled 50+ volunteers to gather over 1,000 speech samples, contributing to a 30% performance boost in CNN model accuracy through PyTorch-driven deep learning optimizations.",
       ],
     },
   ];
