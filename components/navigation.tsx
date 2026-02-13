@@ -21,7 +21,7 @@ const Navigation = () => {
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
-    setIsMobileMenuOpen(false); // Close mobile menu when item is clicked
+    setIsMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -50,11 +50,11 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="relative z-50 md:hidden"
+          className="relative z-[60] md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <HiX className="w-6 h-6 text-gray-900" />
+            <HiX className="w-6 h-6 text-white" />
           ) : (
             <HiMenu className="w-6 h-6 text-gray-900" />
           )}
@@ -118,18 +118,18 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden top-16 bg-white/95 backdrop-blur-md">
-          <div className="flex flex-col items-center justify-center min-h-full space-y-8">
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-blue-900 border-amber-900 md:hidden">
+          <div className="flex flex-col items-center w-full pt-24 space-y-8">
             {/* Navigation Items */}
             <div className="flex flex-col items-center space-y-6">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.sectionId)}
-                  className={`text-2xl font-medium transition-all duration-300 hover:text-blue-600 ${
+                  className={`text-2xl font-medium px-6 py-3 rounded-lg transition-all duration-300 ${
                     activeSection === item.sectionId
-                      ? "text-gray-900 border-b-2 border-blue-600 pb-1"
-                      : "text-gray-600"
+                      ? "text-white border-b-2 border-blue-400"
+                      : "text-gray-200 hover:text-white"
                   }`}
                 >
                   {item.name}
@@ -145,7 +145,7 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-80"
               >
-                <FaTwitter className="text-[#1DA1F2] text-3xl hover:text-gray-900 transition-colors" />
+                <FaTwitter className="text-3xl text-blue-400 transition-colors hover:text-white" />
               </Link>
               <Link
                 href="https://github.com/Sunilshah-7/"
@@ -153,7 +153,7 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-80"
               >
-                <FaGithub className="text-3xl text-gray-900 transition-colors hover:text-blue-600" />
+                <FaGithub className="text-3xl text-white transition-colors hover:text-blue-400" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/sunilshah77/"
@@ -161,7 +161,7 @@ const Navigation = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-80"
               >
-                <FaLinkedin className="text-[#0077B5] text-3xl hover:text-gray-900 transition-colors" />
+                <FaLinkedin className="text-3xl text-blue-400 transition-colors hover:text-white" />
               </Link>
             </div>
           </div>
