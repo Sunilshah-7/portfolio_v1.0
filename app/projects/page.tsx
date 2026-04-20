@@ -115,7 +115,7 @@ const Projects = () => {
 
     target?.scrollIntoView({
       behavior: "smooth",
-      inline: "start",
+      inline: "center",
       block: "nearest",
     });
   };
@@ -132,7 +132,7 @@ const Projects = () => {
 
     target?.scrollIntoView({
       behavior: "smooth",
-      inline: "start",
+      inline: "center",
       block: "nearest",
     });
   };
@@ -149,7 +149,7 @@ const Projects = () => {
 
     target?.scrollIntoView({
       behavior: "smooth",
-      inline: "start",
+      inline: "center",
       block: "nearest",
     });
   };
@@ -192,8 +192,13 @@ const Projects = () => {
         <div className="mt-10 overflow-hidden sm:mt-12">
           <div
             ref={trackRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-[calc((100%-min(1280px,100vw))/2+1rem)] pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
+            <div
+              aria-hidden="true"
+              className="flex-none basis-full sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)]"
+            />
+
             {projects.map((project, index) => {
               const isFeatured = index === 2;
 
@@ -209,7 +214,7 @@ const Projects = () => {
                       viewProject(project.link);
                     }
                   }}
-                  className={`group relative min-h-[420px] flex-none basis-full overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)] ${
+                  className={`group relative min-h-[420px] flex-none basis-full snap-center overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)] ${
                     isFeatured ? "" : ""
                   }`}
                 >
@@ -293,6 +298,11 @@ const Projects = () => {
                 </article>
               );
             })}
+
+            <div
+              aria-hidden="true"
+              className="flex-none basis-full sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)]"
+            />
           </div>
         </div>
 
