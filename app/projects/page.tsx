@@ -106,7 +106,7 @@ const Projects = () => {
     },
   ];
 
-  const visibleProjects = Array.from({ length: 4 }, (_, offset) => {
+  const visibleProjects = Array.from({ length: 3 }, (_, offset) => {
     return projects[(currentIndex + offset) % projects.length];
   });
 
@@ -161,7 +161,7 @@ const Projects = () => {
           </button>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 xl:grid-cols-3">
           {visibleProjects.map((project, index) => {
             const isFeatured = index === 2;
 
@@ -244,11 +244,11 @@ const Projects = () => {
                   </div>
 
                   <div className="flex items-end justify-between gap-4">
-                    <p className="max-w-[11rem] text-xs leading-5 text-white/72 sm:max-w-[13rem] sm:text-sm">
+                    {/* <p className="max-w-[11rem] text-xs leading-5 text-white/72 sm:max-w-[13rem] sm:text-sm">
                       {isFeatured
                         ? "Selected to feel closest to the reference layout, with a stronger emphasis on copy and tags."
                         : "Click to open the project and explore the source or live demo."}
-                    </p>
+                    </p> */}
 
                     <a
                       href={project.link}
