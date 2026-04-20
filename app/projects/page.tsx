@@ -159,7 +159,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,#fbf7f0_0%,#f1ebe3_44%,#e6ded2_100%)] text-stone-900">
+    <section className="relative min-h-screen overflow-hidden bg-blue-50 text-stone-900">
       <div className="absolute inset-0 pointer-events-none opacity-70 bg-[linear-gradient(180deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0)_38%,rgba(255,255,255,0.18)_100%)]" />
       <div className="absolute -top-28 left-[-5rem] h-80 w-80 rounded-full bg-[#8ac8db]/20 blur-3xl" />
       <div className="absolute right-[-6rem] top-24 h-96 w-96 rounded-full bg-[#d3c1a4]/30 blur-3xl" />
