@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Image from "next/image";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
@@ -11,6 +11,7 @@ import OrderManagement from "@/assets/order-management.png";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement | null>(null);
 
   const projects = [
     {
@@ -106,24 +107,51 @@ const Projects = () => {
     },
   ];
 
-  const visibleProjects = Array.from({ length: 3 }, (_, offset) => {
-    return projects[(currentIndex + offset) % projects.length];
-  });
-
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
+
+    const track = trackRef.current;
+    const target = track?.children[index] as HTMLElement | undefined;
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+      block: "nearest",
+    });
   };
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
     );
+
+    const nextIndex =
+      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
+    const track = trackRef.current;
+    const target = track?.children[nextIndex] as HTMLElement | undefined;
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+      block: "nearest",
+    });
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
+
+    const prevIndex =
+      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+    const track = trackRef.current;
+    const target = track?.children[prevIndex] as HTMLElement | undefined;
+
+    target?.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+      block: "nearest",
+    });
   };
 
   const viewProject = (link: string) => {
@@ -161,110 +189,111 @@ const Projects = () => {
           </button>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 xl:grid-cols-3">
-          {visibleProjects.map((project, index) => {
-            const isFeatured = index === 2;
+        <div className="mt-10 overflow-hidden sm:mt-12">
+          <div
+            ref={trackRef}
+            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {projects.map((project, index) => {
+              const isFeatured = index === 2;
 
-            return (
-              <article
-                key={`${project.id}-${index}`}
-                role="button"
-                tabIndex={0}
-                onClick={() => viewProject(project.link)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    viewProject(project.link);
-                  }
-                }}
-                className={`group relative min-h-[420px] overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] ${
-                  isFeatured ? "sm:col-span-2 xl:col-span-1" : ""
-                }`}
-              >
-                <div className="absolute inset-0">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-within:scale-105"
-                  />
-                </div>
-
-                <div
-                  className={`absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-focus-within:opacity-100 bg-gradient-to-t ${
-                    isFeatured
-                      ? "from-black/82 via-black/40 to-transparent"
-                      : index === 1
-                        ? "from-slate-950/80 via-slate-900/40 to-transparent"
-                        : "from-black/72 via-black/24 to-transparent"
+              return (
+                <article
+                  key={`${project.id}-${index}`}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => viewProject(project.link)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      viewProject(project.link);
+                    }
+                  }}
+                  className={`group relative min-h-[420px] flex-none basis-full overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)] ${
+                    isFeatured ? "" : ""
                   }`}
-                />
-
-                <div className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-80 group-focus-within:opacity-80 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0)_42%)]" />
-
-                <div className="relative flex h-full flex-col justify-between p-5 opacity-0 pointer-events-none translate-y-4 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto sm:p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="inline-flex rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur-sm">
-                      {String(project.id).padStart(2, "0")}
-                    </span>
-                    <span className="hidden rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/75 backdrop-blur-sm sm:inline-flex">
-                      Open Project
-                    </span>
+                >
+                  <div className="absolute inset-0">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-within:scale-105"
+                    />
                   </div>
 
-                  <div className="space-y-4 text-white">
-                    <div>
-                      <h3
-                        className={`font-semibold leading-tight ${
-                          isFeatured ? "text-2xl sm:text-[2rem]" : "text-2xl"
-                        }`}
-                      >
-                        {project.title}
-                      </h3>
-                      <p
-                        className={`mt-3 max-w-sm text-sm leading-6 text-white/84 ${
-                          isFeatured ? "sm:text-base" : ""
-                        }`}
-                      >
-                        {project.description}
-                      </p>
+                  <div
+                    className={`absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-focus-within:opacity-100 bg-gradient-to-t ${
+                      isFeatured
+                        ? "from-black/82 via-black/40 to-transparent"
+                        : index === 1
+                          ? "from-slate-950/80 via-slate-900/40 to-transparent"
+                          : "from-black/72 via-black/24 to-transparent"
+                    }`}
+                  />
+
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-80 group-focus-within:opacity-80 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0)_42%)]" />
+
+                  <div className="relative flex h-full flex-col justify-between p-5 opacity-0 pointer-events-none translate-y-4 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto sm:p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="inline-flex rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur-sm">
+                        {String(project.id).padStart(2, "0")}
+                      </span>
+                      <span className="hidden rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/75 backdrop-blur-sm sm:inline-flex">
+                        Open Project
+                      </span>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, isFeatured ? 4 : 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-white/18 px-3 py-1 text-xs text-white/90 backdrop-blur-sm"
+                    <div className="space-y-4 text-white">
+                      <div>
+                        <h3
+                          className={`font-semibold leading-tight ${
+                            isFeatured ? "text-2xl sm:text-[2rem]" : "text-2xl"
+                          }`}
                         >
-                          {tag}
-                        </span>
-                      ))}
+                          {project.title}
+                        </h3>
+                        <p
+                          className={`mt-3 max-w-sm text-sm leading-6 text-white/84 ${
+                            isFeatured ? "sm:text-base" : ""
+                          }`}
+                        >
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags
+                          .slice(0, isFeatured ? 4 : 3)
+                          .map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full bg-white/18 px-3 py-1 text-xs text-white/90 backdrop-blur-sm"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-end justify-between gap-4">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/12 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/25"
+                      >
+                        View
+                        <MdChevronRight className="h-5 w-5" />
+                      </a>
                     </div>
                   </div>
-
-                  <div className="flex items-end justify-between gap-4">
-                    {/* <p className="max-w-[11rem] text-xs leading-5 text-white/72 sm:max-w-[13rem] sm:text-sm">
-                      {isFeatured
-                        ? "Selected to feel closest to the reference layout, with a stronger emphasis on copy and tags."
-                        : "Click to open the project and explore the source or live demo."}
-                    </p> */}
-
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(event) => event.stopPropagation()}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/12 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/25"
-                    >
-                      View
-                      <MdChevronRight className="h-5 w-5" />
-                    </a>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+                </article>
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-7 flex items-center justify-center gap-2 sm:mt-8">
