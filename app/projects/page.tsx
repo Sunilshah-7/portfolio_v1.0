@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Image from "next/image";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
@@ -11,7 +11,6 @@ import OrderManagement from "@/assets/order-management.png";
 
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const projects = [
     {
@@ -107,18 +106,9 @@ const Projects = () => {
     },
   ];
 
-  // Auto scroll functionality
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-        );
-      }, 4000);
-
-      return () => clearInterval(interval);
-    }
-  }, [isPaused, projects.length]);
+  const visibleProjects = Array.from({ length: 4 }, (_, offset) => {
+    return projects[(currentIndex + offset) % projects.length];
+  });
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
@@ -126,146 +116,173 @@ const Projects = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+      prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
   };
 
-  const viewProject = (e: React.MouseEvent<HTMLDivElement>, link: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    window.open(link);
+  const viewProject = (link: string) => {
+    window.open(link, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div className="min-h-screen bg-blue-200">
-      <div className="w-full px-4 py-12 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div className="mb-8 text-center sm:mb-12">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
-            Featured Projects
-          </h2>
-          <p className="text-base text-gray-400 sm:text-lg">
-            Discover my latest work and creations
-          </p>
-        </div>
+    <section className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,#fbf7f0_0%,#f1ebe3_44%,#e6ded2_100%)] text-stone-900">
+      <div className="absolute inset-0 pointer-events-none opacity-70 bg-[linear-gradient(180deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0)_38%,rgba(255,255,255,0.18)_100%)]" />
+      <div className="absolute -top-28 left-[-5rem] h-80 w-80 rounded-full bg-[#8ac8db]/20 blur-3xl" />
+      <div className="absolute right-[-6rem] top-24 h-96 w-96 rounded-full bg-[#d3c1a4]/30 blur-3xl" />
 
-        <div
-          className="relative overflow-hidden rounded-2xl"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Main carousel container */}
-          <div
-            className="flex transition-transform duration-700 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                onClick={(e) => viewProject(e, project.link)}
-                className="relative flex-shrink-0 w-full cursor-pointer group"
-              >
-                {/* Hover tooltip - hidden on mobile */}
-                <div className="absolute z-10 hidden px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 transform -translate-x-1/2 rounded-lg opacity-0 pointer-events-none top-4 left-1/2 bg-black/80 group-hover:opacity-100 whitespace-nowrap sm:block">
-                  Click to View project
-                </div>
-
-                <div className="relative h-80 sm:h-96 md:h-[500px] mx-2 sm:mx-4">
-                  {/* Project Card */}
-                  <div
-                    className={`h-full rounded-2xl bg-gradient-to-br ${project.color} relative overflow-hidden group cursor-pointer transform transition-all duration-300`}
-                  >
-                    {/* Layout - stacked on mobile, side-by-side on desktop */}
-                    <div className="flex flex-col h-full md:flex-row">
-                      {/* Content Section */}
-                      <div className="flex-1 p-4 sm:p-6 md:p-8">
-                        <div className="flex flex-col justify-between h-full">
-                          <div>
-                            <h3 className="mb-2 text-xl font-bold leading-tight text-white sm:mb-4 sm:text-2xl md:text-3xl lg:text-4xl">
-                              {project.title}
-                            </h3>
-                            <p className="mb-4 text-sm sm:mb-6 sm:text-base md:text-lg text-white/90">
-                              {project.description}
-                            </p>
-
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-1 mb-4 sm:gap-2 sm:mb-6">
-                              {project.tags.map((tag, tagIndex) => (
-                                <span
-                                  key={tagIndex}
-                                  className="px-2 py-1 text-xs font-medium text-white rounded-full sm:px-3 sm:text-sm bg-white/20 backdrop-blur-sm"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Image Section */}
-                      <div className="flex-1 p-2 sm:p-4 md:p-4">
-                        <div className="relative h-32 overflow-hidden transition-transform duration-300 sm:h-48 md:h-full rounded-xl">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover w-full h-full transition-all duration-300 rounded-xl"
-                          />
-                          {/* Subtle overlay on image */}
-                          <div className="absolute inset-0 transition-opacity duration-300 rounded-xl bg-black/10 group-hover:bg-black/5"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-black/10 group-hover:opacity-100"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Navigation Arrows - hidden on mobile */}
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="flex items-center justify-between gap-4">
           <button
             onClick={prevSlide}
-            className="absolute items-center justify-center hidden w-10 h-10 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full sm:flex sm:w-12 sm:h-12 left-2 sm:left-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
-            aria-label="Previous project"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-stone-400/60 bg-white/45 text-stone-700 shadow-sm backdrop-blur-sm transition-transform duration-300 hover:-translate-x-1 hover:bg-white/70"
+            aria-label="Previous projects"
           >
-            <MdChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            <MdChevronLeft className="h-7 w-7" />
           </button>
+
+          <div className="max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-stone-500 sm:text-sm">
+              Featured Projects
+            </p>
+          </div>
 
           <button
             onClick={nextSlide}
-            className="absolute items-center justify-center hidden w-10 h-10 text-white transition-all duration-300 transform -translate-y-1/2 rounded-full sm:flex sm:w-12 sm:h-12 right-2 sm:right-4 top-1/2 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-110"
-            aria-label="Next project"
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-stone-400/60 bg-white/45 text-stone-700 shadow-sm backdrop-blur-sm transition-transform duration-300 hover:translate-x-1 hover:bg-white/70"
+            aria-label="Next projects"
           >
-            <MdChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            <MdChevronRight className="h-7 w-7" />
           </button>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
+        <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 xl:grid-cols-4">
+          {visibleProjects.map((project, index) => {
+            const isFeatured = index === 2;
+
+            return (
+              <article
+                key={`${project.id}-${index}`}
+                role="button"
+                tabIndex={0}
+                onClick={() => viewProject(project.link)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    viewProject(project.link);
+                  }
+                }}
+                className={`group relative min-h-[420px] overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] ${
+                  isFeatured ? "sm:col-span-2 xl:col-span-1" : ""
+                }`}
+              >
+                <div className="absolute inset-0">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-within:scale-105"
+                  />
+                </div>
+
+                <div
+                  className={`absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-focus-within:opacity-100 bg-gradient-to-t ${
+                    isFeatured
+                      ? "from-black/82 via-black/40 to-transparent"
+                      : index === 1
+                        ? "from-slate-950/80 via-slate-900/40 to-transparent"
+                        : "from-black/72 via-black/24 to-transparent"
+                  }`}
+                />
+
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-80 group-focus-within:opacity-80 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0)_42%)]" />
+
+                <div className="relative flex h-full flex-col justify-between p-5 opacity-0 pointer-events-none translate-y-4 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto sm:p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="inline-flex rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur-sm">
+                      {String(project.id).padStart(2, "0")}
+                    </span>
+                    <span className="hidden rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/75 backdrop-blur-sm sm:inline-flex">
+                      Open Project
+                    </span>
+                  </div>
+
+                  <div className="space-y-4 text-white">
+                    <div>
+                      <h3
+                        className={`font-semibold leading-tight ${
+                          isFeatured ? "text-2xl sm:text-[2rem]" : "text-2xl"
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
+                      <p
+                        className={`mt-3 max-w-sm text-sm leading-6 text-white/84 ${
+                          isFeatured ? "sm:text-base" : ""
+                        }`}
+                      >
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, isFeatured ? 4 : 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-white/18 px-3 py-1 text-xs text-white/90 backdrop-blur-sm"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-end justify-between gap-4">
+                    <p className="max-w-[11rem] text-xs leading-5 text-white/72 sm:max-w-[13rem] sm:text-sm">
+                      {isFeatured
+                        ? "Selected to feel closest to the reference layout, with a stronger emphasis on copy and tags."
+                        : "Click to open the project and explore the source or live demo."}
+                    </p>
+
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(event) => event.stopPropagation()}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/12 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/25"
+                    >
+                      View
+                      <MdChevronRight className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-7 flex items-center justify-center gap-2 sm:mt-8">
           {projects.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+              className={`h-2.5 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "bg-white w-6 sm:w-8"
-                  : "bg-white/30 hover:bg-white/50"
+                  ? "w-8 bg-stone-900"
+                  : "w-2.5 bg-stone-400/70"
               }`}
               aria-label={`Go to project ${index + 1}`}
-            ></button>
+            />
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
