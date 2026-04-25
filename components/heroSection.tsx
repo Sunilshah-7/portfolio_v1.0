@@ -19,12 +19,15 @@ const HeroSection = () => {
     e.preventDefault();
     window.open(
       "https://drive.google.com/file/d/1rIXUUY9Qm3rdlIsywc4yu6qJvCsZewNG/view?usp=sharing",
-      "_blank"
+      "_blank",
     );
   };
 
   return (
-    <section id="home" className="relative flex items-center min-h-screen overflow-hidden">
+    <section
+      id="home"
+      className="relative flex items-center min-h-screen overflow-hidden"
+    >
       {/* Particle Background */}
       <HeroAnimation />
 
@@ -56,11 +59,16 @@ const HeroSection = () => {
             className="font-[var(--font-space)] text-[clamp(3.5rem,7vw,6.5rem)] font-bold leading-[1.0] tracking-[-0.04em] mb-6 opacity-0"
             style={{ animation: "fadeUp 0.9s 0.5s both" }}
           >
-            Turning<br />Vision<br />Into{" "}
+            Turning
+            <br />
+            Vision
+            <br />
+            Into{" "}
             <span
               className="bg-gradient-to-r from-[var(--blue)] to-[var(--purple)] bg-clip-text text-transparent"
               style={{
-                background: "linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%)",
+                background:
+                  "linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
@@ -75,8 +83,9 @@ const HeroSection = () => {
             className="text-[1rem] text-[var(--muted)] leading-[1.8] max-w-[460px] mb-10 opacity-0"
             style={{ animation: "fadeUp 0.9s 0.7s both" }}
           >
-            One intelligent line of code at a time. Passionate about AI, robotics,
-            and building meaningful digital experiences that learn, adapt, and perform.
+            One intelligent line of code at a time. Passionate about AI,
+            robotics, and building meaningful digital experiences that learn,
+            adapt, and perform.
           </p>
 
           {/* Buttons */}
@@ -88,7 +97,7 @@ const HeroSection = () => {
               onClick={openResume}
               className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--blue)] text-white border-none cursor-pointer shadow-[0_0_28px_rgba(74,143,255,0.35)] hover:bg-[#6ba5ff] hover:-translate-y-[2px] hover:shadow-[0_0_40px_rgba(74,143,255,0.55)] transition-all duration-250"
             >
-              Resume ↗
+              CV ↗
             </button>
             <button
               onClick={scrollToContact}
@@ -103,27 +112,27 @@ const HeroSection = () => {
         <div
           className="relative opacity-0"
           style={{
-            animation: "fadeIn 1.2s 0.6s both, portraitFloat 7s ease-in-out infinite",
+            animation:
+              "fadeIn 1.2s 0.6s both, portraitFloat 7s ease-in-out infinite",
           }}
         >
           {/* Glow Effect */}
           <div
             className="absolute -inset-[30px] rounded-[24px] z-[1]"
             style={{
-              background: "radial-gradient(ellipse at center, rgba(74,143,255,0.22) 0%, rgba(155,108,247,0.1) 50%, transparent 75%)",
+              background:
+                "radial-gradient(ellipse at center, rgba(74,143,255,0.22) 0%, rgba(155,108,247,0.1) 50%, transparent 75%)",
               animation: "gPulse 5s ease-in-out infinite",
             }}
           />
 
           {/* Top-left Floating Tag */}
-          <div
-            className="absolute -top-[18px] -left-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]"
-          >
+          <div className="absolute -top-[18px] -left-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]">
             <p className="text-[0.6rem] tracking-[0.12em] uppercase text-[var(--muted)]">
               Location
             </p>
             <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--purple)]">
-              Washington DC
+              United States
             </p>
           </div>
 
@@ -146,8 +155,7 @@ const HeroSection = () => {
                 "linear-gradient(135deg, rgba(74,143,255,0.5), rgba(155,108,247,0.4), transparent 60%, rgba(74,143,255,0.2))",
               WebkitMask:
                 "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-              mask:
-                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "xor",
               maskComposite: "exclude",
               padding: "1px",
@@ -155,12 +163,7 @@ const HeroSection = () => {
           />
 
           {/* Bottom-right Floating Tag */}
-          <div
-            className="absolute -bottom-[18px] -right-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]"
-          >
-            <p className="text-[0.6rem] tracking-[0.15em] uppercase text-[var(--muted)]">
-              Currently
-            </p>
+          <div className="absolute -bottom-[18px] -right-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]">
             <p className="font-[var(--font-space)] text-[0.9rem] font-bold text-[var(--blue)]">
               MS @ GWU &apos;26
             </p>

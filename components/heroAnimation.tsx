@@ -5,11 +5,13 @@ const HeroAnimation = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasEl = canvasRef.current;
+    if (!canvasEl) return;
+    const canvas = canvasEl;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    const context = ctx;
 
     let W = canvas.width;
     let H = canvas.height;
@@ -54,7 +56,7 @@ const HeroAnimation = () => {
     };
 
     function drawParticles() {
-      ctx.clearRect(0, 0, W, H);
+      context.clearRect(0, 0, W, H);
 
       // Update and draw particles
       pts.forEach((p) => {
@@ -77,29 +79,29 @@ const HeroAnimation = () => {
           const dy = ay - by;
           const d = Math.sqrt(dx * dx + dy * dy);
           if (d < 120) {
-            ctx.beginPath();
-            ctx.moveTo(ax, ay);
-            ctx.lineTo(bx, by);
-            ctx.strokeStyle = `rgba(74,143,255,${0.08 * (1 - d / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+            context.beginPath();
+            context.moveTo(ax, ay);
+            context.lineTo(bx, by);
+            context.strokeStyle = `rgba(74,143,255,${0.08 * (1 - d / 120)})`;
+            context.lineWidth = 0.5;
+            context.stroke();
           }
         }
         // Draw particle
-        ctx.beginPath();
-        ctx.arc(ax, ay, a.s, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(74,143,255,${a.o})`;
-        ctx.fill();
+        context.beginPath();
+        context.arc(ax, ay, a.s, 0, Math.PI * 2);
+        context.fillStyle = `rgba(74,143,255,${a.o})`;
+        context.fill();
       }
 
       // Mouse-reactive glow
       const mx = mouseX * W;
       const my = mouseY * H;
-      const rg = ctx.createRadialGradient(mx, my, 0, mx, my, 200);
+      const rg = context.createRadialGradient(mx, my, 0, mx, my, 200);
       rg.addColorStop(0, "rgba(74,143,255,0.04)");
       rg.addColorStop(1, "transparent");
-      ctx.fillStyle = rg;
-      ctx.fillRect(0, 0, W, H);
+      context.fillStyle = rg;
+      context.fillRect(0, 0, W, H);
 
       requestAnimationFrame(drawParticles);
     }
