@@ -1,60 +1,130 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Logo from "@/assets/logo.png";
+import React, { useEffect, useRef } from "react";
 
-const HeroAnimation = ({
-  onAnimationComplete,
-}: {
-  onAnimationComplete: () => void;
-}) => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [isSliding, setIsSliding] = useState(false);
+const HeroAnimation = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Start the slide animation after 2 seconds
-    const timer = setTimeout(() => {
-      setIsSliding(true);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-      // Complete the animation after slide transition
-      setTimeout(() => {
-        setIsVisible(false);
-        onAnimationComplete();
-      }, 800); // Match this with CSS transition duration
-    }, 2000);
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    return () => clearTimeout(timer);
-  }, [onAnimationComplete]);
+    let W = canvas.width;
+    let H = canvas.height;
+    let pts: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      s: number;
+      o: number;
+    }> = [];
 
-  if (!isVisible) return null;
+    function rnd(a: number, b: number) {
+      return a + Math.random() * (b - a);
+    }
+
+    function resizeCv() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function initParticles() {
+      pts = [];
+      for (let i = 0; i < 110; i++) {
+        pts.push({
+          x: rnd(0, 1),
+          y: rnd(0, 1),
+          vx: rnd(-0.00015, 0.00015),
+          vy: rnd(-0.00015, 0.00015),
+          s: rnd(0.5, 2),
+          o: rnd(0.1, 0.5),
+        });
+      }
+    }
+
+    let mouseX = 0.5;
+    let mouseY = 0.5;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX = e.clientX / W;
+      mouseY = e.clientY / H;
+    };
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Update and draw particles
+      pts.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > 1) p.vx *= -1;
+        if (p.y < 0 || p.y > 1) p.vy *= -1;
+      });
+
+      // Draw connections
+      for (let i = 0; i < pts.length; i++) {
+        const a = pts[i];
+        const ax = a.x * W;
+        const ay = a.y * H;
+        for (let j = i + 1; j < pts.length; j++) {
+          const b = pts[j];
+          const bx = b.x * W;
+          const by = b.y * H;
+          const dx = ax - bx;
+          const dy = ay - by;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(ax, ay);
+            ctx.lineTo(bx, by);
+            ctx.strokeStyle = `rgba(74,143,255,${0.08 * (1 - d / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(ax, ay, a.s, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(74,143,255,${a.o})`;
+        ctx.fill();
+      }
+
+      // Mouse-reactive glow
+      const mx = mouseX * W;
+      const my = mouseY * H;
+      const rg = ctx.createRadialGradient(mx, my, 0, mx, my, 200);
+      rg.addColorStop(0, "rgba(74,143,255,0.04)");
+      rg.addColorStop(1, "transparent");
+      ctx.fillStyle = rg;
+      ctx.fillRect(0, 0, W, H);
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    // Initialize
+    resizeCv();
+    initParticles();
+    drawParticles();
+
+    // Event listeners
+    window.addEventListener("resize", resizeCv);
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("resize", resizeCv);
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
-    <div
-      className={`fixed inset-0 z-[9999] bg-blue-200 flex items-center justify-center transition-transform duration-800 ease-in-out ${
-        isSliding ? "-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      <div className="flex flex-col items-center justify-center px-4 space-y-4 sm:space-y-8">
-        {/* Logo with fade-in animation - responsive sizing */}
-        <div className="animate-fade-in">
-          <Image
-            src={Logo}
-            alt="Logo"
-            width={150}
-            height={150}
-            className="w-32 h-32 animate-pulse sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52"
-            priority
-          />
-        </div>
-
-        {/* Optional loading text - responsive text size */}
-        <div className="animate-fade-in-delayed">
-          <p className="text-lg font-semibold text-center text-white sm:text-xl md:text-2xl animate-bounce">
-            Welcome
-          </p>
-        </div>
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      id="pcanvas"
+      className="absolute inset-0 w-full h-full"
+    />
   );
 };
 
