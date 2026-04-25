@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import React, { useEffect, useRef, useState } from "react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import Image from "next/image";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
 import AIParliament from "@/assets/ai-parliament.png";
@@ -8,316 +8,242 @@ import Agrotrack from "@/assets/agrotrack.png";
 import Eghumti from "@/assets/eghumti.png";
 import Robotics from "@/assets/robotics.png";
 import OrderManagement from "@/assets/order-management.png";
+import type { StaticImageData } from "next/image";
 
-const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const trackRef = useRef<HTMLDivElement | null>(null);
+const projects = [
+  {
+    n: 1,
+    title: "AI Assistant for Educational YouTube Videos",
+    desc: "Turning YouTube Learning into an Interactive Experience",
+    img: AIYoutubeAssistant,
+    tags: ["AI", "Video AI", "NLP", "Learning"],
+    link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
+  },
+  {
+    n: 2,
+    title: "AI Parliament",
+    desc: "Debating Policies, Powered by AI",
+    img: AIParliament,
+    tags: ["Multi-Agent", "Policy", "Debate"],
+    link: "https://github.com/Aarekaz/JH_hackathon",
+  },
+  {
+    n: 3,
+    title: "Agrotrack",
+    desc: "AI for Smarter, Greener Farming",
+    img: Agrotrack,
+    tags: ["AgriTech", "AI", "Sustainability"],
+    link: "https://devpost.com/software/terrasync",
+  },
+  {
+    n: 4,
+    title: "Eghumti E-Commerce Store",
+    desc: "Your All-in-One Online Store Solution",
+    img: Eghumti,
+    tags: ["React", "Ecommerce", "Stripe"],
+    link: "https://github.com/Sunilshah-7/nextjs-commerce",
+  },
+  {
+    n: 5,
+    title: "Robotics Club Landing Page",
+    desc: "Dynamic Web Experience for Robotics",
+    img: Robotics,
+    tags: ["Next.js", "Laravel", "Web"],
+    link: "https://github.com/WRCRoboticsClub/frontend",
+  },
+  {
+    n: 6,
+    title: "Admin Order Management",
+    desc: "Smart Dashboard for Orders & Analytics",
+    img: OrderManagement,
+    tags: ["Analytics", "Dashboard", "React"],
+    link: "https://github.com/Sunilshah-7/admin-dashboard",
+  },
+];
 
-  const projects = [
-    {
-      id: 1,
-      title: "AI assistant for Educational YouTube videos",
-      description: "Turning YouTube Learning into an Interactive Experience",
-      image: AIYoutubeAssistant,
-      color: "from-purple-600 to-blue-600",
-      tags: [
-        "AI",
-        "Video AI",
-        "Youtube",
-        "Learning Assistant",
-        "Summarization",
-        "Interactive Learning",
-      ],
-      link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
-    },
-    {
-      id: 2,
-      title: "AI Parliament",
-      description: "Debating Policies, Powered by AI",
-      image: AIParliament,
-      color: "from-slate-700 to-purple-600",
-      tags: [
-        "AI",
-        "Debate",
-        "Policy",
-        "Discussion",
-        "Multi Agent Systems",
-        "Governance Tech",
-      ],
-      link: "https://github.com/Aarekaz/JH_hackathon",
-    },
-    {
-      id: 3,
-      title: "Agrotrack",
-      description: "AI for Smarter, Greener Farming",
-      image: Agrotrack,
-      color: "from-blue-500 to-cyan-500",
-      tags: [
-        "AI in Agriculture",
-        "Sustainability",
-        "Crop Rotation",
-        "Precision Farming",
-      ],
-      link: "https://devpost.com/software/terrasync",
-    },
-    {
-      id: 4,
-      title: "Eghumti Ecommerce Online Store",
-      description: "Your All-in-One Online Store Solution",
-      image: Eghumti,
-      color: "from-green-600 to-blue-600",
-      tags: [
-        "Ecommerce",
-        "Web Development",
-        "React",
-        "Payment Integration",
-        "Stripe",
-      ],
-      link: "https://github.com/Sunilshah-7/nextjs-commerce",
-    },
-    {
-      id: 5,
-      title: "Robotics Club Landing Page",
-      description: "Showcasing Robotics with a Dynamic Web Experience",
-      image: Robotics,
-      color: "from-orange-500 to-red-500",
-      tags: [
-        "Community Website",
-        "Web Development",
-        "Next.js",
-        "Robotics",
-        "Laravel",
-      ],
-      link: "https://github.com/WRCRoboticsClub/frontend",
-    },
-    {
-      id: 6,
-      title: "Admin Order Management",
-      description: "Smart Dashboard for Orders, Users, and Analytics",
-      image: OrderManagement,
-      color: "from-indigo-600 to-purple-600",
-      tags: [
-        "Order Management",
-        "Data Analytics",
-        "Admin tools",
-        "Visualization",
-        "Business Automation",
-      ],
-      link: "https://github.com/Sunilshah-7/admin-dashboard",
-    },
-  ];
+interface Project {
+  n: number;
+  title: string;
+  desc: string;
+  img: StaticImageData;
+  tags: string[];
+  link: string;
+}
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
 
-    const track = trackRef.current;
-    const target = track?.children[index] as HTMLElement | undefined;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
 
-    target?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    card.style.transform = `perspective(700px) rotateX(${-y * 9}deg) rotateY(${x * 9}deg) scale(1.025)`;
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
-    );
-
-    const nextIndex =
-      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
-    const track = trackRef.current;
-    const target = track?.children[nextIndex] as HTMLElement | undefined;
-
-    target?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (card) {
+      card.style.transform = "";
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
-    );
-
-    const prevIndex =
-      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
-    const track = trackRef.current;
-    const target = track?.children[prevIndex] as HTMLElement | undefined;
-
-    target?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
-  };
-
-  const viewProject = (link: string) => {
-    window.open(link, "_blank", "noopener,noreferrer");
+  const openLink = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    window.open(project.link, "_blank");
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-blue-50 text-stone-900">
-      <div className="absolute inset-0 pointer-events-none opacity-70 bg-[linear-gradient(180deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0)_38%,rgba(255,255,255,0.18)_100%)]" />
-      <div className="absolute -top-28 left-[-5rem] h-80 w-80 rounded-full bg-[#8ac8db]/20 blur-3xl" />
-      <div className="absolute right-[-6rem] top-24 h-96 w-96 rounded-full bg-[#d3c1a4]/30 blur-3xl" />
+    <div
+      ref={cardRef}
+      className="rv relative h-[330px] rounded-[16px] overflow-hidden border border-[var(--border)] cursor-pointer transition-all duration-[350ms] hover:border-[rgba(74,143,255,0.3)] hover:shadow-[0_40px_90px_rgba(0,0,0,0.65),0_0_0_1px_rgba(74,143,255,0.1)]"
+      style={{ transitionDelay: `${index * 0.07}s` }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={openLink}
+    >
+      {/* Background Image */}
+      <Image
+        src={project.img}
+        alt={project.title}
+        fill
+        className="object-cover transition-transform duration-[550ms]"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="flex items-center justify-between gap-4">
-          <button
-            onClick={prevSlide}
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-stone-400/60 bg-white/45 text-stone-700 shadow-sm backdrop-blur-sm transition-transform duration-300 hover:-translate-x-1 hover:bg-white/70"
-            aria-label="Previous projects"
-          >
-            <MdChevronLeft className="h-7 w-7" />
-          </button>
+      {/* Shimmer Overlay */}
+      <div
+        className="absolute inset-0 opacity-0 transition-opacity duration-[350ms]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(74,143,255,0.08), rgba(155,108,247,0.06))",
+        }}
+      />
 
-          <div className="max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.4em] text-stone-500 sm:text-sm">
-              Featured Projects
-            </p>
-          </div>
+      {/* Gradient Overlay */}
+      <div
+        className="absolute inset-0 flex flex-col justify-end p-6"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(4,8,18,0.95) 0%, rgba(4,8,18,0.5) 45%, transparent 100%)",
+        }}
+      >
+        {/* Project Number */}
+        <p className="text-[0.6rem] tracking-[0.25em] text-[rgba(255,255,255,0.35)] mb-1">
+          {String(project.n).padStart(2, "0")}
+        </p>
 
-          <button
-            onClick={nextSlide}
-            className="flex h-12 w-12 items-center justify-center rounded-full border border-stone-400/60 bg-white/45 text-stone-700 shadow-sm backdrop-blur-sm transition-transform duration-300 hover:translate-x-1 hover:bg-white/70"
-            aria-label="Next projects"
-          >
-            <MdChevronRight className="h-7 w-7" />
-          </button>
+        {/* Title */}
+        <h3 className="font-[var(--font-space)] text-[1rem] font-bold text-white mb-1 leading-[1.25]">
+          {project.title}
+        </h3>
+
+        {/* Description */}
+        <p className="text-[0.74rem] text-[rgba(255,255,255,0.55)] mb-3">
+          {project.desc}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[0.6rem] px-[0.55rem] py-[0.18rem] rounded-[100px] bg-[rgba(255,255,255,0.08)] text-[rgba(255,255,255,0.6)] border border-[rgba(255,255,255,0.1)]"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
+      </div>
 
-        <div className="mt-10 overflow-hidden sm:mt-12">
-          <div
-            ref={trackRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-[calc((100%-min(1280px,100vw))/2+1rem)] pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-          >
-            <div
-              aria-hidden="true"
-              className="flex-none basis-full sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)]"
-            />
+      {/* External Link Button */}
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={(e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          window.open(project.link, "_blank");
+        }}
+        className="absolute top-4 right-4 w-[34px] h-[34px] rounded-full bg-[rgba(0,0,0,0.4)] backdrop-blur-[10px] border border-[rgba(255,255,255,0.18)] flex items-center justify-center text-white text-[0.75rem] no-underline opacity-0 transition-all duration-300 hover:bg-[rgba(0,0,0,0.6)]"
+        style={{
+          transform: "translateY(-6px)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.opacity = "1";
+          e.currentTarget.style.transform = "none";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.opacity = "0";
+          e.currentTarget.style.transform = "translateY(-6px)";
+        }}
+      >
+        ↗
+      </a>
 
-            {projects.map((project, index) => {
-              const isFeatured = index === 2;
+      {/* Hover Image Scale */}
+      <style jsx>{`
+        &:hover img {
+          transform: scale(1.09);
+        }
+      `}</style>
+    </div>
+  );
+};
 
-              return (
-                <article
-                  key={`${project.id}-${index}`}
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => viewProject(project.link)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      viewProject(project.link);
-                    }
-                  }}
-                  className={`group relative min-h-[420px] flex-none basis-full snap-center overflow-hidden rounded-[2rem] border border-white/65 bg-white/40 shadow-[0_24px_80px_rgba(88,72,58,0.14)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_90px_rgba(88,72,58,0.18)] sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)] ${
-                    isFeatured ? "" : ""
-                  }`}
-                >
-                  <div className="absolute inset-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105 group-focus-within:scale-105"
-                    />
-                  </div>
+const Projects = () => {
+  const sectionRef = useRef<HTMLElement>(null);
 
-                  <div
-                    className={`absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100 group-focus-within:opacity-100 bg-gradient-to-t ${
-                      isFeatured
-                        ? "from-black/82 via-black/40 to-transparent"
-                        : index === 1
-                          ? "from-slate-950/80 via-slate-900/40 to-transparent"
-                          : "from-black/72 via-black/24 to-transparent"
-                    }`}
-                  />
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("on");
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
 
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-80 group-focus-within:opacity-80 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0)_42%)]" />
+    const elements = sectionRef.current?.querySelectorAll(".rv");
+    elements?.forEach((el) => observer.observe(el));
 
-                  <div className="relative flex h-full flex-col justify-between p-5 opacity-0 pointer-events-none translate-y-4 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto sm:p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="inline-flex rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 backdrop-blur-sm">
-                        {String(project.id).padStart(2, "0")}
-                      </span>
-                      <span className="hidden rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/75 backdrop-blur-sm sm:inline-flex">
-                        Open Project
-                      </span>
-                    </div>
+    return () => observer.disconnect();
+  }, []);
 
-                    <div className="space-y-4 text-white">
-                      <div>
-                        <h3
-                          className={`font-semibold leading-tight ${
-                            isFeatured ? "text-2xl sm:text-[2rem]" : "text-2xl"
-                          }`}
-                        >
-                          {project.title}
-                        </h3>
-                        <p
-                          className={`mt-3 max-w-sm text-sm leading-6 text-white/84 ${
-                            isFeatured ? "sm:text-base" : ""
-                          }`}
-                        >
-                          {project.description}
-                        </p>
-                      </div>
+  return (
+    <section
+      id="projects"
+      ref={sectionRef}
+      className="bg-[var(--bg)] relative overflow-hidden py-[7rem]"
+    >
+      {/* Background Gradient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74,143,255,0.04) 0%, transparent 70%)",
+        }}
+      />
 
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags
-                          .slice(0, isFeatured ? 4 : 3)
-                          .map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full bg-white/18 px-3 py-1 text-xs text-white/90 backdrop-blur-sm"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                      </div>
-                    </div>
+      <div className="relative z-[2] max-w-[1200px] mx-auto px-8">
+        {/* Section Label */}
+        <span className="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--blue)] block mb-[0.6rem] rv">
+          Work
+        </span>
+        <h2 className="font-[var(--font-space)] text-[clamp(2rem,4vw,3rem)] font-bold tracking-[-0.025em] leading-[1.1] mb-16 rv">
+          Featured <b className="text-[var(--blue)]">Projects</b>
+        </h2>
 
-                    <div className="flex items-end justify-between gap-4">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(event) => event.stopPropagation()}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/12 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-300 hover:bg-white/25"
-                      >
-                        View
-                        <MdChevronRight className="h-5 w-5" />
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-
-            <div
-              aria-hidden="true"
-              className="flex-none basis-full sm:basis-[calc(50%-0.5rem)] xl:basis-[calc(33.333%-0.75rem)]"
-            />
-          </div>
-        </div>
-
-        <div className="mt-7 flex items-center justify-center gap-2 sm:mt-8">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8 bg-stone-900"
-                  : "w-2.5 bg-stone-400/70"
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.n} project={project} index={index} />
           ))}
         </div>
       </div>
