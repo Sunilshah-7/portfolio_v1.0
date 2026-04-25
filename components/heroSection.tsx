@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
-import HireMeButton from "./hireMe";
 import Image from "next/image";
 import Portrait from "@/assets/Portrait.png";
+import HeroAnimation from "./heroAnimation";
 
 const HeroSection = () => {
   const scrollToContact = () => {
@@ -25,66 +24,165 @@ const HeroSection = () => {
   };
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      <div className="container flex items-center min-h-screen px-4 py-12 mx-auto sm:px-6 lg:px-8 sm:py-20">
-        <div className="grid items-center w-full grid-cols-1 gap-8 sm:gap-12 lg:gap-16 lg:grid-cols-2">
-          {/* Image - shown first on mobile, second on desktop */}
-          <div className="flex justify-center order-1 lg:justify-start lg:order-1">
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-full lg:h-200 ">
-              <Image
-                src={Portrait}
-                alt="Profile"
-                fill
-                className="object-cover rounded-none lg:rounded-lg"
-                priority
-              />
-            </div>
+    <section id="home" className="relative flex items-center min-h-screen overflow-hidden">
+      {/* Particle Background */}
+      <HeroAnimation />
+
+      {/* Grid Background Overlay */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(74,143,255,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(74,143,255,0.025) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="relative z-[2] max-w-[1200px] mx-auto px-8 pt-28 pb-16 grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-20 items-center">
+        {/* Left: Hero Text */}
+        <div className="hero-text">
+          {/* Eyebrow */}
+          <p
+            className="text-[0.7rem] tracking-[0.35em] uppercase text-[var(--blue)] mb-6 opacity-0"
+            style={{ animation: "fadeUp 0.9s 0.3s both" }}
+          >
+            AI Engineer & Full-Stack Developer
+          </p>
+
+          {/* Name */}
+          <h1
+            className="font-[var(--font-space)] text-[clamp(3.5rem,7vw,6.5rem)] font-bold leading-[1.0] tracking-[-0.04em] mb-6 opacity-0"
+            style={{ animation: "fadeUp 0.9s 0.5s both" }}
+          >
+            Turning<br />Vision<br />Into{" "}
+            <span
+              className="bg-gradient-to-r from-[var(--blue)] to-[var(--purple)] bg-clip-text text-transparent"
+              style={{
+                background: "linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+              }}
+            >
+              Reality.
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p
+            className="text-[1rem] text-[var(--muted)] leading-[1.8] max-w-[460px] mb-10 opacity-0"
+            style={{ animation: "fadeUp 0.9s 0.7s both" }}
+          >
+            One intelligent line of code at a time. Passionate about AI, robotics,
+            and building meaningful digital experiences that learn, adapt, and perform.
+          </p>
+
+          {/* Buttons */}
+          <div
+            className="flex flex-wrap gap-4 opacity-0"
+            style={{ animation: "fadeUp 0.9s 0.9s both" }}
+          >
+            <button
+              onClick={openResume}
+              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--blue)] text-white border-none cursor-pointer shadow-[0_0_28px_rgba(74,143,255,0.35)] hover:bg-[#6ba5ff] hover:-translate-y-[2px] hover:shadow-[0_0_40px_rgba(74,143,255,0.55)] transition-all duration-250"
+            >
+              Resume ↗
+            </button>
+            <button
+              onClick={scrollToContact}
+              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-transparent text-[var(--text)] border border-[var(--border)] hover:border-[var(--blue)] hover:text-[var(--blue)] hover:-translate-y-[2px] transition-all duration-250"
+            >
+              Get in Touch
+            </button>
+          </div>
+        </div>
+
+        {/* Right: Portrait */}
+        <div
+          className="relative opacity-0"
+          style={{
+            animation: "fadeIn 1.2s 0.6s both, portraitFloat 7s ease-in-out infinite",
+          }}
+        >
+          {/* Glow Effect */}
+          <div
+            className="absolute -inset-[30px] rounded-[24px] z-[1]"
+            style={{
+              background: "radial-gradient(ellipse at center, rgba(74,143,255,0.22) 0%, rgba(155,108,247,0.1) 50%, transparent 75%)",
+              animation: "gPulse 5s ease-in-out infinite",
+            }}
+          />
+
+          {/* Top-left Floating Tag */}
+          <div
+            className="absolute -top-[18px] -left-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]"
+          >
+            <p className="text-[0.6rem] tracking-[0.12em] uppercase text-[var(--muted)]">
+              Location
+            </p>
+            <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--purple)]">
+              Washington DC
+            </p>
           </div>
 
-          {/* Content - shown second on mobile, first on desktop */}
-          <div className="order-2 space-y-6 text-center sm:space-y-8 lg:text-left lg:order-2">
-            <div className="space-y-4 sm:space-y-6">
-              <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
-                <span className="block">Turning Vision Into</span>
-                <span className="block text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-                  Reality With One Intelligent Line of
-                </span>
-                <span className="block">Code At a Time.</span>
-              </h1>
+          {/* Portrait Image */}
+          <div className="relative w-full aspect-[5/6] overflow-hidden rounded-[14px] z-[2]">
+            <Image
+              src={Portrait}
+              alt="Sunil Shah"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+          </div>
 
-              <p className="max-w-lg mx-auto text-base leading-relaxed text-gray-600 lg:mx-0 sm:text-lg lg:text-xl">
-                I believe great software isn&#39;t just built—it&#39;s imagined,
-                designed, and refined. With a passion for AI and product
-                thinking, I engineer meaningful digital experiences that learn,
-                adapt, and perform.
-              </p>
-            </div>
+          {/* Border Ring Gradient */}
+          <div
+            className="absolute inset-0 rounded-[14px] z-[3] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(74,143,255,0.5), rgba(155,108,247,0.4), transparent 60%, rgba(74,143,255,0.2))",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              mask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              padding: "1px",
+            }}
+          />
 
-            <div className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-              <button
-                onClick={openResume}
-                className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-gray-900 rounded-lg shadow-lg group hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1"
-              >
-                Resume
-                <FaExternalLinkAlt
-                  size={16}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </button>
-
-              <button
-                onClick={scrollToContact}
-                className="flex items-center justify-center gap-2 px-6 py-3 font-semibold text-gray-900 transition-all duration-300 transform border-2 border-gray-900 rounded-lg hover:bg-gray-900 hover:text-white hover:-translate-y-1"
-              >
-                Contact
-              </button>
-            </div>
+          {/* Bottom-right Floating Tag */}
+          <div
+            className="absolute -bottom-[18px] -right-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]"
+          >
+            <p className="text-[0.6rem] tracking-[0.15em] uppercase text-[var(--muted)]">
+              Currently
+            </p>
+            <p className="font-[var(--font-space)] text-[0.9rem] font-bold text-[var(--blue)]">
+              MS @ GWU &apos;26
+            </p>
           </div>
         </div>
       </div>
 
-      <HireMeButton />
-    </main>
+      {/* Scroll Indicator */}
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-[var(--muted)] opacity-0"
+        style={{ animation: "fadeIn 1s 1.8s both" }}
+      >
+        <div
+          className="w-[1px] h-[44px]"
+          style={{
+            background: "linear-gradient(to bottom, var(--blue), transparent)",
+            animation: "scrollLine 2.2s ease-in-out infinite",
+          }}
+        />
+        <span>Scroll</span>
+      </div>
+    </section>
   );
 };
 

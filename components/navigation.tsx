@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { FaGithub, FaTwitter, FaLinkedin, FaCodepen } from "react-icons/fa";
 import { BsStackOverflow } from "react-icons/bs";
-import { HiMenu, HiX } from "react-icons/hi";
-import Image from "next/image";
-import Logo from "@/assets/logo.png";
+// import { HiMenu, HiX } from "react-icons/hi";
+// import Image from "next/image";
+// import Logo from "@/assets/logo.png";
 import Link from "next/link";
 
 const Navigation = () => {
