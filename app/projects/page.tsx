@@ -17,7 +17,7 @@ const projects = [
     desc: "Turning YouTube Learning into an Interactive Experience",
     img: AIYoutubeAssistant,
     tags: ["AI", "Video AI", "NLP", "Learning"],
-    link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
+    link: "https://github.com/Sunilshah-7/Agentic-Tutor/tree/allComponents",
   },
   {
     n: 2,
@@ -25,7 +25,7 @@ const projects = [
     desc: "Debating Policies, Powered by AI",
     img: AIParliament,
     tags: ["Multi-Agent", "Policy", "Debate"],
-    link: "https://github.com/Aarekaz/JH_hackathon",
+    link: "https://github.com/Sunilshah-7/JHU_hackathon",
   },
   {
     n: 3,
@@ -49,7 +49,7 @@ const projects = [
     desc: "Dynamic Web Experience for Robotics",
     img: Robotics,
     tags: ["Next.js", "Laravel", "Web"],
-    link: "https://github.com/WRCRoboticsClub/frontend",
+    link: "https://frontend-ecru-phi.vercel.app/",
   },
   {
     n: 6,
@@ -57,7 +57,7 @@ const projects = [
     desc: "Smart Dashboard for Orders & Analytics",
     img: OrderManagement,
     tags: ["Analytics", "Dashboard", "React"],
-    link: "https://github.com/Sunilshah-7/admin-dashboard",
+    link: "https://order-management-dashboard-flax.vercel.app/",
   },
 ];
 
