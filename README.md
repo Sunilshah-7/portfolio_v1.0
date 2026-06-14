@@ -1,12 +1,12 @@
-# Sunil Shah Portfolio Website
+# My Portfolio Website
 
-This repository contains the source code for my personal portfolio website. It showcases my work as an Hardware Engineer, AI Engineer and Full-Stack Developer, with a focus on artificial intelligence, robotics, hardware, electronics, computer vision, and meaningful digital products.
+This repository contains the source code for my personal portfolio website. It showcases my work as an Hardware Engineer, AI Engineer and Full-Stack Developer, with a focus on artificial intelligence, robotics, hardware, electronics, computer vision, infrastructure and meaningful digital products.
 
 The site presents my background, education, professional experience, research projects, featured software projects, technical skills, writing, and contact links in one interactive portfolio experience.
 
 ## About the Portfolio
 
-The website introduces me as an AI Engineer and Full-Stack Developer based in the United States, currently pursuing an MS in Computer Science at George Washington University.
+The website introduces me as an AI Engineer and Full-Stack Developer based in the United States, graduated from my MS in Computer Science at George Washington University.
 
 It includes:
 
@@ -52,34 +52,6 @@ The portfolio features experience with:
 - TypeScript
 - Tailwind CSS
 - Vercel Speed Insights
-
-## Getting Started
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-Build for production:
-
-```bash
-npm run build
-```
-
-Start the production server:
-
-```bash
-npm run start
-```
 
 ## Contact
 
