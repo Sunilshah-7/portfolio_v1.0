@@ -546,6 +546,7 @@ section {
 
 .skills-wrap {
   margin-top: 5rem;
+  margin-bottom: 2.25rem;
 }
 
 .tag-cloud {
@@ -1083,6 +1084,10 @@ footer {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+
+  .skills-wrap {
+    margin-bottom: 1.75rem;
   }
 
   .research-row,

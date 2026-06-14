@@ -6,11 +6,13 @@ import Link from "next/link";
 import HeroAnimation from "@/components/heroAnimation";
 import Portrait from "@/assets/Portrait.png";
 import AIYoutubeAssistant from "@/assets/ai-youtube-assistant.png";
-import AIParliament from "@/assets/ai-parliament.png";
-import Agrotrack from "@/assets/agrotrack.png";
 import Eghumti from "@/assets/eghumti.png";
 import Robotics from "@/assets/robotics.png";
 import OrderManagement from "@/assets/order-management.png";
+import IMDAI from "@/assets/imd ai.png";
+import CoverLetter from "@/assets/cover-letter-generator.png";
+import InsurancePhoto from "@/assets/insurance-agent-graphics.png";
+import GoalClassifier from "@/assets/UNSDG Goals Image.jpg";
 import DecentralizedAI from "@/assets/decentralized_ai.png";
 import HardwareAI from "@/assets/hardware_ai.png";
 import HumorAI from "@/assets/humor_ai.png";
@@ -115,6 +117,14 @@ const RESEARCH: ResearchItem[] = [
 const PROJECTS: Project[] = [
   {
     n: 1,
+    title: "Infrastructure Console Management",
+    desc: "Enterprise dashboard for operating an AI platform",
+    img: IMDAI,
+    tags: ["Infrastructure", "Cloudflare", "GPU"],
+    link: "https://infrastructure-management-dashboard.sunilshah2416.workers.dev/",
+  },
+  {
+    n: 2,
     title: "AI Assistant for Educational YouTube Videos",
     desc: "Turning YouTube Learning into an Interactive Experience",
     img: AIYoutubeAssistant,
@@ -122,23 +132,39 @@ const PROJECTS: Project[] = [
     link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
   },
   {
-    n: 2,
-    title: "AI Parliament",
-    desc: "Debating Policies, Powered by AI",
-    img: AIParliament,
-    tags: ["Multi-Agent", "Policy", "Debate"],
-    link: "https://github.com/Aarekaz/JH_hackathon",
-  },
-  {
     n: 3,
-    title: "Agrotrack",
-    desc: "AI for Smarter, Greener Farming",
-    img: Agrotrack,
-    tags: ["AgriTech", "AI", "Sustainability"],
-    link: "https://devpost.com/software/terrasync",
+    title: "UN SDG CLASSIFIER TOOL",
+    desc: "ML-powered UN SDG Classifier: Analyzing Open-Source Repositories for Sustainable Development Goals",
+    img: GoalClassifier,
+    tags: ["Machine Learning", "Sustainability", "Open Source"],
+    link: "https://github.com/chaoss/UNSDG-classifier-tool",
   },
   {
     n: 4,
+    title: "FinContext Agent",
+    desc: "Turn your SEC filings into citation-grounded portfolio analysis",
+    img: InsurancePhoto,
+    tags: ["Finance", "RAG", "NLP", "AI Agents"],
+    link: "https://github.com/Sunilshah-7/Finance-Context-Agent",
+  },
+  {
+    n: 5,
+    title: "Life Insurance Document RAG Agent",
+    desc: "Get your insurance questions answered in a flash with this RAG agent that retrieves and summarizes info from your policy documents.",
+    img: InsurancePhoto,
+    tags: ["RAG", "NLP", "Insurance", "AI Agents"],
+    link: "https://github.com/Sunilshah-7/Insurance-RAG-Agent",
+  },
+  {
+    n: 6,
+    title: "Cover Letter Generator for Job Applications",
+    desc: "Crafting Tailored Cover Letters with AI: Your Job Application's Secret Weapon",
+    img: CoverLetter,
+    tags: ["AgriTech", "AI", "Sustainability"],
+    link: "https://cover-letter-generator-chi-seven.vercel.app/",
+  },
+  {
+    n: 7,
     title: "Eghumti E-Commerce Store",
     desc: "Your All-in-One Online Store Solution",
     img: Eghumti,
@@ -146,20 +172,20 @@ const PROJECTS: Project[] = [
     link: "https://github.com/Sunilshah-7/nextjs-commerce",
   },
   {
-    n: 5,
+    n: 8,
     title: "Robotics Club Landing Page",
     desc: "Dynamic Web Experience for Robotics",
     img: Robotics,
     tags: ["Next.js", "Laravel", "Web"],
-    link: "https://github.com/WRCRoboticsClub/frontend",
+    link: "https://robotics.wrc.edu.np/",
   },
   {
-    n: 6,
+    n: 9,
     title: "Admin Order Management",
     desc: "Smart Dashboard for Orders & Analytics",
     img: OrderManagement,
     tags: ["Analytics", "Dashboard", "React"],
-    link: "https://github.com/Sunilshah-7/admin-dashboard",
+    link: "https://order-management-dashboard-flax.vercel.app/",
   },
 ];
 
@@ -574,6 +600,11 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Research Title goes here */}
+          <h2 className="s-title rv">
+            Research <b>Projects</b>
+          </h2>
 
           <div className="research-row">
             {RESEARCH.map((item, index) => (
