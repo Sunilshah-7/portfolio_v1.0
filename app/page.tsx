@@ -12,6 +12,7 @@ import OrderManagement from "@/assets/order-management.png";
 import IMDAI from "@/assets/imd ai.png";
 import CoverLetter from "@/assets/cover-letter-generator.png";
 import InsurancePhoto from "@/assets/insurance-agent-graphics.png";
+import FinanceContext from "@/assets/fincontext.png";
 import GoalClassifier from "@/assets/UNSDG Goals Image.jpg";
 import DecentralizedAI from "@/assets/decentralized_ai.png";
 import HardwareAI from "@/assets/hardware_ai.png";
@@ -143,7 +144,7 @@ const PROJECTS: Project[] = [
     n: 4,
     title: "FinContext Agent",
     desc: "Turn your SEC filings into citation-grounded portfolio analysis",
-    img: InsurancePhoto,
+    img: FinanceContext,
     tags: ["Finance", "RAG", "NLP", "AI Agents"],
     link: "https://github.com/Sunilshah-7/Finance-Context-Agent",
   },
