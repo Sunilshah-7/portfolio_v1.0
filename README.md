@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sunil Shah Portfolio Website
+
+This repository contains the source code for my personal portfolio website. It showcases my work as an Hardware Engineer, AI Engineer and Full-Stack Developer, with a focus on artificial intelligence, robotics, hardware, electronics, computer vision, and meaningful digital products.
+
+The site presents my background, education, professional experience, research projects, featured software projects, technical skills, writing, and contact links in one interactive portfolio experience.
+
+## About the Portfolio
+
+The website introduces me as an AI Engineer and Full-Stack Developer based in the United States, currently pursuing an MS in Computer Science at George Washington University.
+
+It includes:
+
+- Education and work experience
+- Technical skills across AI, ML, computer vision, backend, frontend, and deployment
+- Research projects in prosthetics, robotics, and LIDAR-based detection
+- Featured software and AI projects
+- Articles on AI governance, trustworthy AI, AI in hardware, humor in AI, and healthcare AI risks
+- Contact form and social links
+
+## Technical Skills Highlighted
+
+The portfolio features experience with:
+
+- Python, PyTorch, TensorFlow, YOLOv7, OpenCV, Mask R-CNN
+- React.js, Next.js, Node.js, Django, Flask, Electron.js
+- AWS Lambda, PostgreSQL, Docker
+- ONNX, TensorRT, MATLAB
+- LLMs and Sentence Transformers
+
+## Featured Research
+
+- EMG Signals to Control Prosthetic Hands
+- Indoor Path Planning for Mobile Robot
+- Blind Spot Detection Using LIDAR
+
+## Featured Projects
+
+- Infrastructure Console Management
+- AI Assistant for Educational YouTube Videos
+- UN SDG Classifier Tool
+- FinContext Agent
+- Life Insurance Document RAG Agent
+- Cover Letter Generator for Job Applications
+- Eghumti E-Commerce Store
+- Robotics Club Landing Page
+- Admin Order Management
+
+## Built With
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Vercel Speed Insights
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Start the production server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- GitHub: [Sunilshah-7](https://github.com/Sunilshah-7/)
+- LinkedIn: [sunilshah77](https://www.linkedin.com/in/sunilshah77/)
+- X: [@SunilShah2416](https://x.com/SunilShah2416)
+- Stack Overflow: [Sunil Shah](https://stackoverflow.com/users/10602401/sunil-shah)
+- CodePen: [sunilshah-7](https://codepen.io/sunilshah-7)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Sunil Shah
