@@ -94,28 +94,6 @@ const Navigation = () => {
             S<em className="not-italic text-[var(--blue)]">.</em>Shah
           </div>
 
-          {/* <button
-            className="relative z-[60] md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <HiX className="w-6 h-6 text-white" />
-            ) : (
-              <HiMenu className="w-6 h-6 text-gray-900" />
-            )}
-          </button> */}
-
-          {/* Right: Social Links */}
-          {/* <div className="items-center hidden gap-5 md:flex">
-            <Image
-              src={Logo}
-              alt="Logo"
-              width={80}
-              height={80}
-              className="w-16 h-16 sm:w-20 sm:h-20"
-            />
-          </div> */}
-
           {/* Social Links - hidden on mobile, shown on desktop */}
           <div className="items-center hidden gap-5 md:flex">
             <Link

@@ -4,18 +4,19 @@ import CoverLetter from "@/assets/cover-letter-generator.png";
 import DecentralizedAI from "@/assets/decentralized_ai.png";
 import Eghumti from "@/assets/eghumti.png";
 import FinanceContext from "@/assets/fincontext.png";
-import GoalClassifier from "@/assets/UNSDG Goals Image.jpg";
+import GoalClassifier from "@/assets/unsdg-goals.png";
 import HardwareAI from "@/assets/hardware_ai.png";
 import HealthAI from "@/assets/health_ai.jpg";
 import HumorAI from "@/assets/humor_ai.png";
 import IMDAI from "@/assets/imd ai.png";
-import InsurancePhoto from "@/assets/insurance-agent-graphics.png";
+import InsurancePhoto from "@/assets/insurance-agent.png";
 import Lidar from "@/assets/lidar.png";
 import MobileRobot from "@/assets/mobile_robot.png";
 import OrderManagement from "@/assets/order-management.png";
 import Prosthesis from "@/assets/prosthesis.png";
 import Robotics from "@/assets/robotics.png";
 import TrustworthyAI from "@/assets/trustworthy_ai.png";
+import ContentJournal from "@/assets/content-journal.png";
 
 export type CardItem = {
   title: string;
@@ -112,19 +113,19 @@ export const RESEARCH: ResearchItem[] = [
 export const PROJECTS: Project[] = [
   {
     n: 1,
+    title: "Blog Content Management Website",
+    desc: "A Journal to present all your ideas",
+    img: ContentJournal,
+    tags: ["UI", "CMS", "Design"],
+    link: "content-management-system-swart.vercel.app/",
+  },
+  {
+    n: 2,
     title: "Infrastructure Console Management",
     desc: "Enterprise dashboard for operating an AI platform",
     img: IMDAI,
     tags: ["Infrastructure", "Cloudflare", "GPU"],
     link: "https://infrastructure-management-dashboard.sunilshah2416.workers.dev/",
-  },
-  {
-    n: 2,
-    title: "AI Assistant for Educational YouTube Videos",
-    desc: "Turning YouTube Learning into an Interactive Experience",
-    img: AIYoutubeAssistant,
-    tags: ["AI", "Video AI", "NLP", "Learning"],
-    link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
   },
   {
     n: 3,
@@ -136,6 +137,14 @@ export const PROJECTS: Project[] = [
   },
   {
     n: 4,
+    title: "Admin Order Management",
+    desc: "Smart Dashboard for Orders & Analytics",
+    img: OrderManagement,
+    tags: ["Analytics", "Dashboard", "React"],
+    link: "https://order-management-dashboard-flax.vercel.app/",
+  },
+  {
+    n: 5,
     title: "FinContext Agent",
     desc: "Turn your SEC filings into citation-grounded portfolio analysis",
     img: FinanceContext,
@@ -143,7 +152,7 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/Sunilshah-7/Finance-Context-Agent",
   },
   {
-    n: 5,
+    n: 6,
     title: "Life Insurance Document RAG Agent",
     desc: "Get your insurance questions answered in a flash with this RAG agent that retrieves and summarizes info from your policy documents.",
     img: InsurancePhoto,
@@ -151,7 +160,7 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/Sunilshah-7/Insurance-RAG-Agent",
   },
   {
-    n: 6,
+    n: 7,
     title: "Cover Letter Generator for Job Applications",
     desc: "Crafting Tailored Cover Letters with AI: Your Job Application's Secret Weapon",
     img: CoverLetter,
@@ -159,15 +168,15 @@ export const PROJECTS: Project[] = [
     link: "https://cover-letter-generator-chi-seven.vercel.app/",
   },
   {
-    n: 7,
-    title: "Eghumti E-Commerce Store",
-    desc: "Your All-in-One Online Store Solution",
-    img: Eghumti,
-    tags: ["React", "Ecommerce", "Stripe"],
-    link: "https://github.com/Sunilshah-7/nextjs-commerce",
+    n: 8,
+    title: "AI Assistant for Educational YouTube Videos",
+    desc: "Turning YouTube Learning into an Interactive Experience",
+    img: AIYoutubeAssistant,
+    tags: ["AI", "Video AI", "NLP", "Learning"],
+    link: "https://github.com/Sunilshah-7/ASP-project/tree/allComponents",
   },
   {
-    n: 8,
+    n: 9,
     title: "Robotics Club Landing Page",
     desc: "Dynamic Web Experience for Robotics",
     img: Robotics,
@@ -175,12 +184,12 @@ export const PROJECTS: Project[] = [
     link: "https://robotics.wrc.edu.np/",
   },
   {
-    n: 9,
-    title: "Admin Order Management",
-    desc: "Smart Dashboard for Orders & Analytics",
-    img: OrderManagement,
-    tags: ["Analytics", "Dashboard", "React"],
-    link: "https://order-management-dashboard-flax.vercel.app/",
+    n: 10,
+    title: "Eghumti E-Commerce Store",
+    desc: "Your All-in-One Online Store Solution",
+    img: Eghumti,
+    tags: ["React", "Ecommerce", "Stripe"],
+    link: "https://github.com/Sunilshah-7/nextjs-commerce",
   },
 ];
 
