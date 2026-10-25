@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
     desc: "A Journal to present all your ideas",
     img: ContentJournal,
     tags: ["UI", "CMS", "Design"],
-    link: "content-management-system-swart.vercel.app/",
+    link: "https://content-management-system-swart.vercel.app/",
   },
   {
     n: 2,
