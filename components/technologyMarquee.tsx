@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { IconType } from "react-icons";
 import { DiMsqlServer } from "react-icons/di";
 import { LuLayers3 } from "react-icons/lu";
@@ -6,7 +7,7 @@ import { VscAzure } from "react-icons/vsc";
 import {
   SiAmazonwebservices, SiArduino, SiBabel, SiC, SiClaude, SiCplusplus,
   SiDjango, SiDocker, SiElectron, SiExpress, SiFigma, SiFirebase, SiFlutter,
-  SiGatsby, SiGit, SiGithubactions, SiGnubash, SiGoogle, SiGraphql,
+  SiGatsby, SiGit, SiGithubactions, SiGithubcopilot, SiGnubash, SiGoogle, SiGraphql,
   SiJavascript, SiLangchain, SiLinux, SiMongodb, SiMysql, SiNestjs,
   SiNextdotjs, SiNodedotjs, SiNuxtdotjs, SiOllama, SiOpenai, SiOpencv,
   SiPandas, SiPhp, SiPostgresql, SiPostman, SiPython, SiPytorch, SiReact,
@@ -14,7 +15,7 @@ import {
   SiTensorflow, SiTypescript, SiVuedotjs, SiWebpack,
 } from "react-icons/si";
 
-const technologies: ReadonlyArray<readonly [name: string, icon: IconType, color: string]> = [
+const technologies: ReadonlyArray<readonly [name: string, icon: IconType | string, color?: string]> = [
   ["Python", SiPython, "#3776ab"],
   ["TypeScript", SiTypescript, "#3178c6"],
   ["JavaScript", SiJavascript, "#a47d00"],
@@ -40,11 +41,18 @@ const technologies: ReadonlyArray<readonly [name: string, icon: IconType, color:
   ["LangChain", SiLangchain, "#1c3c3c"],
   ["ChromaDB", LuLayers3, "#8a49bc"],
   ["GPT", SiOpenai, "#171717"],
-  ["Claude", SiClaude, "#af553b"],
-  ["Ollama", SiOllama, "#171717"],
   ["Gemma", SiGoogle, "#4285f4"],
   ["scikit-learn", SiScikitlearn, "#bd620e"],
   ["pandas", SiPandas, "#312475"],
+  ["Claude", SiClaude, "#af553b"],
+  ["Codex", "/technology/codex-color.svg"],
+  ["Ollama", SiOllama, "#171717"],
+  ["OpenCode", "/technology/opencode.svg"],
+  ["DeepSeek", "/technology/deepseek-color.svg"],
+  ["Kimi", "/technology/kimi-color.svg"],
+  ["Qwen", "/technology/qwen-color.svg"],
+  ["GitHub Copilot", SiGithubcopilot, "#171717"],
+  ["Hermes Agent", "/technology/hermesagent.svg"],
   ["ROS", SiRos, "#22314e"],
   ["Arduino", SiArduino, "#008184"],
   ["YDLIDAR", TbRadar, "#375b70"],
@@ -83,7 +91,11 @@ export default function TechnologyMarquee() {
             >
               {technologies.map(([name, Icon, color]) => (
                 <li className="technology-item" key={name}>
-                  <Icon aria-hidden="true" style={{ color }} />
+                  {typeof Icon === "string" ? (
+                    <Image src={Icon} alt="" width={30} height={30} />
+                  ) : (
+                    <Icon aria-hidden="true" style={{ color }} />
+                  )}
                   <span>{name}</span>
                 </li>
               ))}

@@ -968,7 +968,7 @@ footer {
 .technology-track {
   display: flex;
   width: max-content;
-  animation: technology-scroll 86s linear infinite;
+  animation: technology-scroll 98s linear infinite;
 }
 
 .technology-list {
@@ -991,7 +991,8 @@ footer {
   white-space: nowrap;
 }
 
-.technology-item svg {
+.technology-item svg,
+.technology-item img {
   width: 1.85rem;
   height: 1.85rem;
 }
