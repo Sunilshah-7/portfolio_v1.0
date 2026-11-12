@@ -15,7 +15,7 @@ const HireMe = () => {
     <div className="fixed z-40 bottom-4 right-4 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-8">
       <div className="relative group">
         {/* Glowing background effect */}
-        <div className="absolute inset-0 w-16 h-16 transition-opacity rounded-full opacity-75 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-purple-600 to-pink-600 blur-lg group-hover:opacity-100 animate-pulse"></div>
+        <div className="absolute inset-0 w-16 h-16 transition-opacity rounded-full opacity-60 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-blue-600 to-teal-600 blur-lg group-hover:opacity-80 animate-pulse"></div>
 
         {/* Main circular button */}
         <button

@@ -36,8 +36,8 @@ const HeroSection = () => {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(74,143,255,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(74,143,255,0.025) 1px, transparent 1px)
+            linear-gradient(rgba(37,99,235,0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.045) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
@@ -65,10 +65,10 @@ const HeroSection = () => {
             <br />
             Into{" "}
             <span
-              className="bg-gradient-to-r from-[var(--blue)] to-[var(--purple)] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[var(--blue)] to-[var(--teal)] bg-clip-text text-transparent"
               style={{
                 background:
-                  "linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%)",
+                  "linear-gradient(120deg, var(--blue) 0%, var(--teal) 100%)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
@@ -95,7 +95,7 @@ const HeroSection = () => {
           >
             <button
               onClick={openResume}
-              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--blue)] text-white border-none cursor-pointer shadow-[0_0_28px_rgba(74,143,255,0.35)] hover:bg-[#6ba5ff] hover:-translate-y-[2px] hover:shadow-[0_0_40px_rgba(74,143,255,0.55)] transition-all duration-250"
+              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--blue)] text-white border-none cursor-pointer shadow-[0_12px_28px_rgba(37,99,235,0.2)] hover:bg-[#1d4ed8] hover:-translate-y-[2px] hover:shadow-[0_16px_34px_rgba(37,99,235,0.28)] transition-all duration-250"
             >
               CV ↗
             </button>
@@ -121,7 +121,7 @@ const HeroSection = () => {
             className="absolute -inset-[30px] rounded-[24px] z-[1]"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(74,143,255,0.22) 0%, rgba(155,108,247,0.1) 50%, transparent 75%)",
+                "radial-gradient(ellipse at center, rgba(37,99,235,0.16) 0%, rgba(15,118,110,0.09) 50%, transparent 75%)",
               animation: "gPulse 5s ease-in-out infinite",
             }}
           />
@@ -131,7 +131,7 @@ const HeroSection = () => {
             <p className="text-[0.6rem] tracking-[0.12em] uppercase text-[var(--muted)]">
               Location
             </p>
-            <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--purple)]">
+            <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--teal)]">
               United States
             </p>
           </div>
@@ -152,7 +152,7 @@ const HeroSection = () => {
             className="absolute inset-0 rounded-[14px] z-[3] pointer-events-none"
             style={{
               background:
-                "linear-gradient(135deg, rgba(74,143,255,0.5), rgba(155,108,247,0.4), transparent 60%, rgba(74,143,255,0.2))",
+                "linear-gradient(135deg, rgba(37,99,235,0.5), rgba(15,118,110,0.38), transparent 60%, rgba(37,99,235,0.18))",
               WebkitMask:
                 "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",

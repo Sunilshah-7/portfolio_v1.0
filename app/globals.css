@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #060a14;
-  --bg2: #0a1120;
-  --bg3: #0e1628;
-  --blue: #4a8fff;
-  --purple: #9b6cf7;
-  --text: #dce8ff;
-  --muted: #7080a0;
-  --border: rgba(74, 143, 255, 0.14);
-  --glass: rgba(8, 16, 32, 0.75);
-  /* --background: #ffffff;
-  --foreground: #171717; */
+  --bg: #ffffff;
+  --bg2: #f6f7f9;
+  --bg3: #eef1f5;
+  --blue: #2563eb;
+  --teal: #0f766e;
+  --text: #111827;
+  --muted: #667085;
+  --border: rgba(15, 23, 42, 0.12);
+  --glass: rgba(255, 255, 255, 0.84);
 }
 
 @theme inline {
@@ -21,7 +19,7 @@
   --color-bg2: var(--bg2);
   --color-bg3: var(--bg3);
   --color-blue: var(--blue);
-  --color-purple: var(--purple);
+  --color-teal: var(--teal);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-border: var(--border);
@@ -65,7 +63,7 @@ body {
 .cur-ring {
   width: 30px;
   height: 30px;
-  border: 1.5px solid rgba(74, 143, 255, 0.45);
+  border: 1.5px solid rgba(37, 99, 235, 0.35);
   transition:
     width 0.2s,
     height 0.2s,
@@ -76,7 +74,7 @@ body {
   width: 52px;
   height: 52px;
   opacity: 0.8;
-  border-color: rgba(74, 143, 255, 0.7);
+  border-color: rgba(37, 99, 235, 0.62);
 }
 
 nav {
@@ -95,7 +93,7 @@ nav {
 }
 
 nav.solid {
-  background: rgba(6, 10, 20, 0.88);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(24px);
   box-shadow: 0 1px 0 var(--border);
 }
@@ -193,8 +191,8 @@ nav.solid {
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(74, 143, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 143, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(37, 99, 235, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.045) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -232,7 +230,7 @@ nav.solid {
 }
 
 .hero-name .grad {
-  background: linear-gradient(120deg, var(--blue) 0%, var(--purple) 100%);
+  background: linear-gradient(120deg, var(--blue) 0%, var(--teal) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -275,13 +273,13 @@ nav.solid {
   background: var(--blue);
   color: #fff;
   border: none;
-  box-shadow: 0 0 28px rgba(74, 143, 255, 0.35);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.2);
 }
 
 .btn-p:hover {
-  background: #6ba5ff;
+  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 0 40px rgba(74, 143, 255, 0.55);
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.28);
 }
 
 .btn-o {
@@ -321,8 +319,8 @@ nav.solid {
   inset: -30px;
   background: radial-gradient(
     ellipse at center,
-    rgba(74, 143, 255, 0.22) 0%,
-    rgba(155, 108, 247, 0.1) 50%,
+    rgba(37, 99, 235, 0.16) 0%,
+    rgba(15, 118, 110, 0.09) 50%,
     transparent 75%
   );
   z-index: 1;
@@ -338,10 +336,10 @@ nav.solid {
   pointer-events: none;
   background: linear-gradient(
     135deg,
-    rgba(74, 143, 255, 0.5),
-    rgba(155, 108, 247, 0.4),
+    rgba(37, 99, 235, 0.5),
+    rgba(15, 118, 110, 0.38),
     transparent 60%,
-    rgba(74, 143, 255, 0.2)
+    rgba(37, 99, 235, 0.18)
   );
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
@@ -394,7 +392,7 @@ nav.solid {
   font-family: var(--font-space);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--purple);
+  color: var(--teal);
 }
 
 .hero-scroll {
@@ -495,7 +493,7 @@ section {
   top: 8px;
   bottom: 8px;
   width: 1px;
-  background: linear-gradient(to bottom, var(--blue), var(--purple), transparent);
+  background: linear-gradient(to bottom, var(--blue), var(--teal), transparent);
 }
 
 .tl-item {
@@ -512,7 +510,7 @@ section {
   height: 7px;
   border-radius: 50%;
   background: var(--blue);
-  box-shadow: 0 0 10px rgba(74, 143, 255, 0.7);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.36);
   transform: translateX(-3px);
 }
 
@@ -540,7 +538,7 @@ section {
 
 .tl-desc {
   font-size: 0.78rem;
-  color: rgba(112, 128, 160, 0.8);
+  color: #667085;
   line-height: 1.65;
 }
 
@@ -561,14 +559,14 @@ section {
   border: 1px solid var(--border);
   font-size: 0.72rem;
   color: var(--muted);
-  background: rgba(74, 143, 255, 0.04);
+  background: rgba(37, 99, 235, 0.035);
   transition: all 0.2s;
 }
 
 .tag:hover {
   border-color: var(--blue);
   color: var(--blue);
-  background: rgba(74, 143, 255, 0.08);
+  background: rgba(37, 99, 235, 0.07);
 }
 
 .research-row {
@@ -580,7 +578,7 @@ section {
 
 .r-card,
 .a-card {
-  background: rgba(14, 22, 40, 0.8);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
@@ -590,8 +588,8 @@ section {
 .r-card:hover,
 .a-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(74, 143, 255, 0.3);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
 }
 
 .r-img,
@@ -674,7 +672,7 @@ section {
   pointer-events: none;
   background: radial-gradient(
     ellipse 80% 50% at 50% 0%,
-    rgba(74, 143, 255, 0.04) 0%,
+    rgba(37, 99, 235, 0.05) 0%,
     transparent 70%
   );
 }
@@ -702,10 +700,10 @@ section {
 }
 
 .p-card:hover {
-  border-color: rgba(74, 143, 255, 0.3);
+  border-color: rgba(37, 99, 235, 0.28);
   box-shadow:
-    0 40px 90px rgba(0, 0, 0, 0.65),
-    0 0 0 1px rgba(74, 143, 255, 0.1);
+    0 30px 70px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(37, 99, 235, 0.08);
 }
 
 .p-card img {
@@ -726,8 +724,8 @@ section {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(74, 143, 255, 0.08),
-    rgba(155, 108, 247, 0.06)
+    rgba(37, 99, 235, 0.08),
+    rgba(15, 118, 110, 0.06)
   );
   opacity: 0;
   transition: opacity 0.35s;
@@ -742,8 +740,8 @@ section {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(4, 8, 18, 0.95) 0%,
-    rgba(4, 8, 18, 0.5) 45%,
+    rgba(15, 23, 42, 0.94) 0%,
+    rgba(15, 23, 42, 0.48) 45%,
     transparent 100%
   );
   display: flex;
@@ -863,7 +861,7 @@ section {
   pointer-events: none;
   background: radial-gradient(
     ellipse 60% 70% at 50% 100%,
-    rgba(74, 143, 255, 0.06) 0%,
+    rgba(15, 118, 110, 0.055) 0%,
     transparent 65%
   );
 }
@@ -914,7 +912,7 @@ section {
 
 .c-input:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(74, 143, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .c-input::placeholder {
@@ -935,14 +933,14 @@ textarea.c-input {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 28px rgba(74, 143, 255, 0.3);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.18);
   transition: all 0.25s;
   letter-spacing: 0.04em;
 }
 
 .c-btn:hover {
-  background: #6ba5ff;
-  box-shadow: 0 0 44px rgba(74, 143, 255, 0.55);
+  background: #1d4ed8;
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.26);
   transform: translateY(-2px);
 }
 
@@ -972,7 +970,7 @@ textarea.c-input {
 .c-socials a:hover {
   border-color: var(--blue);
   color: var(--blue);
-  box-shadow: 0 0 18px rgba(74, 143, 255, 0.2);
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.14);
 }
 
 footer {

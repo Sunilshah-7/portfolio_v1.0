@@ -61,7 +61,7 @@ const Navigation = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-200 transition-all duration-300 px-8 py-5 ${
           isScrolled
-            ? "bg-[rgba(6,10,20, 0.88)] backdrop-blur-[24px] shadow-[0_1px_0_var(--border)]"
+            ? "bg-[rgba(255,255,255,0.88)] backdrop-blur-[24px] shadow-[0_1px_0_var(--border)]"
             : "bg-transparent"
         }`}
       >
@@ -201,7 +201,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaTwitter className="text-3xl text-blue-400 transition-colors hover:text-white" />
+                    <FaTwitter className="text-3xl text-blue-600 transition-colors hover:text-gray-900" />
                   </Link>
                   <Link
                     href="https://github.com/Sunilshah-7/"
@@ -209,7 +209,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaGithub className="text-3xl text-white transition-colors hover:text-blue-400" />
+                    <FaGithub className="text-3xl text-gray-900 transition-colors hover:text-blue-600" />
                   </Link>
                   <Link
                     href="https://www.linkedin.com/in/sunilshah77/"
@@ -217,7 +217,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaLinkedin className="text-3xl text-blue-400 transition-colors hover:text-white" />
+                    <FaLinkedin className="text-3xl text-blue-600 transition-colors hover:text-gray-900" />
                   </Link>
                 </div>
               </div>
