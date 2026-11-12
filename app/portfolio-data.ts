@@ -41,10 +41,10 @@ export type Article = CardItem & {
 };
 
 export const NAV_ITEMS = [
-  { name: "About Me", id: "about" },
-  { name: "Contact", id: "contact" },
   { name: "Works", id: "projects" },
+  { name: "Research", id: "research" },
   { name: "Articles", id: "articles" },
+  { name: "Contact", id: "contact" },
 ] as const;
 
 export const SOCIAL_LINKS = [
