@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-import { RESEARCH, SKILLS } from "@/app/portfolio-data";
+import { RESEARCH } from "@/app/portfolio-data";
+import TechnologyMarquee from "@/components/technologyMarquee";
 
 export default function AboutSection() {
   return (
@@ -79,54 +79,45 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="skills-wrap rv" style={{ transitionDelay: "0.15s" }}>
-          <p className="col-head">Technical Skills</p>
-          <div className="tag-cloud">
-            {SKILLS.map((skill) => (
-              <span key={skill} className="tag">
-                {skill}
-              </span>
+      <TechnologyMarquee />
+
+      <section id="research" className="research-gallery" aria-labelledby="research-title">
+        <div className="inner">
+          <h2 className="editorial-title rv" id="research-title">Research Projects</h2>
+          <div className="research-grid">
+            {RESEARCH.map((item) => (
+              <article key={item.title} className="research-study rv">
+                <div className="research-figure">
+                  <Image
+                    src={item.img}
+                    alt=""
+                    fill
+                    sizes="(max-width: 720px) 90vw, (max-width: 1000px) 45vw, 50vw"
+                  />
+                </div>
+                <div className="research-copy">
+                  <p className="editorial-meta">{item.discipline}</p>
+                  <h3>{item.title}</h3>
+                  <p className="research-summary">{item.desc}</p>
+                  {item.link && (
+                    <a
+                      className="research-paper"
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Read paper on ${item.title}`}
+                    >
+                      Read paper <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </article>
             ))}
           </div>
         </div>
-
-        <h2 className="s-title rv">
-          Research <b>Projects</b>
-        </h2>
-
-        <div className="research-row">
-          {RESEARCH.map((item, index) => (
-            <div
-              key={item.title}
-              className="r-card rv"
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
-              <div className="r-img">
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-                />
-              </div>
-              <div className="r-body">
-                <h4>{item.title}</h4>
-                <p>{item.desc}</p>
-                {item.link ? (
-                  <Link
-                    className="r-link"
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read Paper &#8599;
-                  </Link>
-                ) : null}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     </section>
   );
 }

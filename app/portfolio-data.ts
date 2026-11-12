@@ -25,6 +25,7 @@ export type CardItem = {
 };
 
 export type ResearchItem = CardItem & {
+  discipline: string;
   link?: string;
 };
 
@@ -40,11 +41,10 @@ export type Article = CardItem & {
 };
 
 export const NAV_ITEMS = [
-  { name: "Home", id: "hero" },
-  { name: "About", id: "about" },
-  { name: "Projects", id: "projects" },
-  { name: "Articles", id: "articles" },
+  { name: "About Me", id: "about" },
   { name: "Contact", id: "contact" },
+  { name: "Works", id: "projects" },
+  { name: "Articles", id: "articles" },
 ] as const;
 
 export const SOCIAL_LINKS = [
@@ -67,44 +67,24 @@ export const CONTACT_SOCIALS = [
   { label: "CodePen", short: "CP", href: "https://codepen.io/sunilshah-7" },
 ] as const;
 
-export const SKILLS = [
-  "Python",
-  "PyTorch",
-  "TensorFlow",
-  "YOLOv7",
-  "OpenCV",
-  "Mask R-CNN",
-  "React.js",
-  "Next.js",
-  "Node.js",
-  "Django",
-  "Flask",
-  "AWS Lambda",
-  "ONNX",
-  "TensorRT",
-  "PostgreSQL",
-  "Docker",
-  "MATLAB",
-  "LLMs",
-  "Electron.js",
-  "Sentence Transformers",
-];
-
 export const RESEARCH: ResearchItem[] = [
   {
     title: "EMG Signals to Control Prosthetic Hands",
+    discipline: "Assistive technology",
     desc: "ANN-based deep learning system to interpret muscle patterns and translate them into real-time prosthetic actions.",
     img: Prosthesis,
     link: "https://www.researchgate.net/publication/371575279_ELECTROMYOGRAPHY_SIGNALS_TO_CONTROL_PROSTHETIC_HANDS",
   },
   {
     title: "Indoor Path Planning for Mobile Robot",
+    discipline: "Robot navigation",
     desc: "A* algorithm in MATLAB for accurate indoor navigation between any two positions on a predefined warehouse map.",
     img: MobileRobot,
     link: "https://www.researchgate.net/publication/368936297_INDOOR_PATH_FINDING_AND_PLANNING_OF_A_MOBILE_ROBOT_FOR_WAREHOUSES",
   },
   {
     title: "Blind Spot Detection Using LIDAR",
+    discipline: "Automotive sensing",
     desc: "LIDAR sensor integration with ML algorithms to identify and classify objects in autonomous vehicle blind spots.",
     img: Lidar,
   },
