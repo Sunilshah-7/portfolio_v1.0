@@ -161,16 +161,14 @@ export default function Home() {
               Hardware / Software &amp; AI Engineer
             </p>
             <h1 className="hero-name">
-              Turning
+              A peaceful
               <br />
-              Vision
+              and chill
               <br />
-              Into <span className="grad">Reality.</span>
+              <span className="grad">developer</span>
             </h1>
             <p className="hero-sub">
-              One intelligent line of code at a time. Passionate about AI,
-              robotics, and building meaningful digital experiences that learn,
-              adapt, and perform.
+              Just figuring out things and technology
             </p>
             <div className="hero-btns">
               <Link

@@ -80,7 +80,7 @@ const Navigation = () => {
                 >
                   {item.name}
                   <span
-                    className={`absolute bottom-0 left-0 h-[1px] bg-[var(--blue)] transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-[1px] bg-[var(--accent)] transition-all duration-300 ${
                       activeSection == item.sectionId ? "w-full" : "w-0"
                     }`}
                   />
@@ -91,7 +91,7 @@ const Navigation = () => {
 
           {/* Center Logo */}
           <div className="text-[1.2rem] font-bold tracking-[-0.02em] font-[var(--font-space)] text-[var(--text)]">
-            S<em className="not-italic text-[var(--blue)]">.</em>Shah
+            S<em className="not-italic text-[var(--accent)]">.</em>Shah
           </div>
 
           {/* Social Links - hidden on mobile, shown on desktop */}
@@ -102,7 +102,7 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <FaTwitter className="text-[#1DA1F2] text-xl lg:text-2xl hover:text-gray-900 transition-colors" />
+              <FaTwitter className="text-gray-900 text-xl lg:text-2xl hover:text-gray-500 transition-colors" />
             </Link>
             <Link
               href="https://github.com/Sunilshah-7/"
@@ -110,7 +110,7 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <FaGithub className="text-xl text-gray-900 transition-colors lg:text-2xl hover:text-blue-600" />
+              <FaGithub className="text-xl text-gray-900 transition-colors lg:text-2xl hover:text-gray-500" />
             </Link>
             <Link
               href="https://www.linkedin.com/in/sunilshah77/"
@@ -118,7 +118,7 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <FaLinkedin className="text-[#0077B5] text-xl lg:text-2xl hover:text-gray-900 transition-colors" />
+              <FaLinkedin className="text-gray-900 text-xl lg:text-2xl hover:text-gray-500 transition-colors" />
             </Link>
             <Link
               href="https://stackoverflow.com/users/10602401/sunil-shah"
@@ -126,7 +126,7 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80"
             >
-              <BsStackOverflow className="text-[#F48024] text-xl lg:text-2xl hover:text-gray-900 transition-colors" />
+              <BsStackOverflow className="text-gray-900 text-xl lg:text-2xl hover:text-gray-500 transition-colors" />
             </Link>
             <Link
               href="https://codepen.io/sunilshah-7"
@@ -201,7 +201,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaTwitter className="text-3xl text-blue-600 transition-colors hover:text-gray-900" />
+                    <FaTwitter className="text-3xl text-gray-900 transition-colors hover:text-gray-500" />
                   </Link>
                   <Link
                     href="https://github.com/Sunilshah-7/"
@@ -209,7 +209,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaGithub className="text-3xl text-gray-900 transition-colors hover:text-blue-600" />
+                    <FaGithub className="text-3xl text-gray-900 transition-colors hover:text-gray-500" />
                   </Link>
                   <Link
                     href="https://www.linkedin.com/in/sunilshah77/"
@@ -217,7 +217,7 @@ const Navigation = () => {
                     rel="noopener noreferrer"
                     className="hover:opacity-80"
                   >
-                    <FaLinkedin className="text-3xl text-blue-600 transition-colors hover:text-gray-900" />
+                    <FaLinkedin className="text-3xl text-gray-900 transition-colors hover:text-gray-500" />
                   </Link>
                 </div>
               </div>

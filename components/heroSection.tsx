@@ -36,8 +36,8 @@ const HeroSection = () => {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(37,99,235,0.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(37,99,235,0.045) 1px, transparent 1px)
+            linear-gradient(rgba(17,17,17,0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(17,17,17,0.045) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
         }}
@@ -48,7 +48,7 @@ const HeroSection = () => {
         <div className="hero-text">
           {/* Eyebrow */}
           <p
-            className="text-[0.7rem] tracking-[0.35em] uppercase text-[var(--blue)] mb-6 opacity-0"
+            className="text-[0.7rem] tracking-[0.35em] uppercase text-[var(--accent)] mb-6 opacity-0"
             style={{ animation: "fadeUp 0.9s 0.3s both" }}
           >
             AI Engineer & Full-Stack Developer
@@ -59,22 +59,21 @@ const HeroSection = () => {
             className="font-[var(--font-space)] text-[clamp(3.5rem,7vw,6.5rem)] font-bold leading-[1.0] tracking-[-0.04em] mb-6 opacity-0"
             style={{ animation: "fadeUp 0.9s 0.5s both" }}
           >
-            Turning
+            A peaceful
             <br />
-            Vision
+            and chill
             <br />
-            Into{" "}
             <span
-              className="bg-gradient-to-r from-[var(--blue)] to-[var(--teal)] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-soft)] bg-clip-text text-transparent"
               style={{
                 background:
-                  "linear-gradient(120deg, var(--blue) 0%, var(--teal) 100%)",
+                  "linear-gradient(120deg, var(--accent) 0%, var(--accent-soft) 100%)",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",
                 color: "transparent",
               }}
             >
-              Reality.
+              developer
             </span>
           </h1>
 
@@ -83,9 +82,7 @@ const HeroSection = () => {
             className="text-[1rem] text-[var(--muted)] leading-[1.8] max-w-[460px] mb-10 opacity-0"
             style={{ animation: "fadeUp 0.9s 0.7s both" }}
           >
-            One intelligent line of code at a time. Passionate about AI,
-            robotics, and building meaningful digital experiences that learn,
-            adapt, and perform.
+            Just figuring out things and technology
           </p>
 
           {/* Buttons */}
@@ -95,13 +92,13 @@ const HeroSection = () => {
           >
             <button
               onClick={openResume}
-              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--blue)] text-white border-none cursor-pointer shadow-[0_12px_28px_rgba(37,99,235,0.2)] hover:bg-[#1d4ed8] hover:-translate-y-[2px] hover:shadow-[0_16px_34px_rgba(37,99,235,0.28)] transition-all duration-250"
+              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-[var(--accent)] text-white border-none cursor-pointer shadow-[0_12px_28px_rgba(17,17,17,0.16)] hover:bg-black hover:-translate-y-[2px] hover:shadow-[0_16px_34px_rgba(17,17,17,0.24)] transition-all duration-250"
             >
               CV ↗
             </button>
             <button
               onClick={scrollToContact}
-              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-transparent text-[var(--text)] border border-[var(--border)] hover:border-[var(--blue)] hover:text-[var(--blue)] hover:-translate-y-[2px] transition-all duration-250"
+              className="px-7 py-[0.8rem] rounded-[7px] text-[0.82rem] font-bold tracking-[0.04em] bg-transparent text-[var(--text)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:-translate-y-[2px] transition-all duration-250"
             >
               Get in Touch
             </button>
@@ -121,7 +118,7 @@ const HeroSection = () => {
             className="absolute -inset-[30px] rounded-[24px] z-[1]"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(37,99,235,0.16) 0%, rgba(15,118,110,0.09) 50%, transparent 75%)",
+                "radial-gradient(ellipse at center, rgba(17,17,17,0.12) 0%, rgba(82,82,91,0.08) 50%, transparent 75%)",
               animation: "gPulse 5s ease-in-out infinite",
             }}
           />
@@ -131,7 +128,7 @@ const HeroSection = () => {
             <p className="text-[0.6rem] tracking-[0.12em] uppercase text-[var(--muted)]">
               Location
             </p>
-            <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--teal)]">
+            <p className="font-[var(--font-space)] text-[0.85rem] font-bold text-[var(--accent-soft)]">
               United States
             </p>
           </div>
@@ -152,7 +149,7 @@ const HeroSection = () => {
             className="absolute inset-0 rounded-[14px] z-[3] pointer-events-none"
             style={{
               background:
-                "linear-gradient(135deg, rgba(37,99,235,0.5), rgba(15,118,110,0.38), transparent 60%, rgba(37,99,235,0.18))",
+                "linear-gradient(135deg, rgba(17,17,17,0.5), rgba(82,82,91,0.38), transparent 60%, rgba(17,17,17,0.18))",
               WebkitMask:
                 "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
               mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -164,7 +161,7 @@ const HeroSection = () => {
 
           {/* Bottom-right Floating Tag */}
           <div className="absolute -bottom-[18px] -right-[18px] z-[5] bg-[var(--glass)] backdrop-blur-[20px] border border-[var(--border)] rounded-[10px] px-3 py-[0.75rem]">
-            <p className="font-[var(--font-space)] text-[0.9rem] font-bold text-[var(--blue)]">
+            <p className="font-[var(--font-space)] text-[0.9rem] font-bold text-[var(--accent)]">
               MS @ GWU &apos;26
             </p>
           </div>
@@ -179,7 +176,7 @@ const HeroSection = () => {
         <div
           className="w-[1px] h-[44px]"
           style={{
-            background: "linear-gradient(to bottom, var(--blue), transparent)",
+            background: "linear-gradient(to bottom, var(--accent), transparent)",
             animation: "scrollLine 2.2s ease-in-out infinite",
           }}
         />

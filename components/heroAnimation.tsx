@@ -82,7 +82,7 @@ const HeroAnimation = () => {
             context.beginPath();
             context.moveTo(ax, ay);
             context.lineTo(bx, by);
-            context.strokeStyle = `rgba(37,99,235,${0.1 * (1 - d / 120)})`;
+            context.strokeStyle = `rgba(17,17,17,${0.1 * (1 - d / 120)})`;
             context.lineWidth = 0.5;
             context.stroke();
           }
@@ -90,7 +90,7 @@ const HeroAnimation = () => {
         // Draw particle
         context.beginPath();
         context.arc(ax, ay, a.s, 0, Math.PI * 2);
-        context.fillStyle = `rgba(37,99,235,${a.o * 0.72})`;
+        context.fillStyle = `rgba(17,17,17,${a.o * 0.62})`;
         context.fill();
       }
 
@@ -98,7 +98,7 @@ const HeroAnimation = () => {
       const mx = mouseX * W;
       const my = mouseY * H;
       const rg = context.createRadialGradient(mx, my, 0, mx, my, 200);
-      rg.addColorStop(0, "rgba(15,118,110,0.045)");
+      rg.addColorStop(0, "rgba(82,82,91,0.04)");
       rg.addColorStop(1, "transparent");
       context.fillStyle = rg;
       context.fillRect(0, 0, W, H);
