@@ -1,4 +1,3 @@
-import { useId } from "react";
 import type { IconType } from "react-icons";
 import { DiMsqlServer } from "react-icons/di";
 import { LuLayers3 } from "react-icons/lu";
@@ -71,16 +70,8 @@ const technologies: ReadonlyArray<readonly [name: string, icon: IconType, color:
 ];
 
 export default function TechnologyMarquee() {
-  const pauseId = useId();
-
   return (
     <div className="technology-marquee" role="region" aria-label="Tools and technologies">
-      <input className="technology-pause sr-only" type="checkbox" id={pauseId} />
-      <label className="technology-control" htmlFor={pauseId}>
-        <span className="sr-only">Pause technology icons</span>
-        <span aria-hidden="true" className="technology-pause-label">Pause</span>
-        <span aria-hidden="true" className="technology-play-label">Play</span>
-      </label>
       <div className="technology-window">
         <div className="technology-track">
           {[false, true].map((duplicate) => (
